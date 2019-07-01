@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">A2IPNS</string>
-    <string name="service_label">NotificationListenerExtendsService</string>
-</resources>
