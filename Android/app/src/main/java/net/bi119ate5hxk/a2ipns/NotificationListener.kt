@@ -1,21 +1,26 @@
 package net.bi119ate5hxk.a2ipns
 
-import android.content.BroadcastReceiver
-import android.content.Context
+import android.app.Notification
 import android.content.Intent
 import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class NotificationListener : NotificationListenerService() {
-    private val nlServiceReceiver: NLServiceReceiver = NLServiceReceiver()
+    override fun onNotificationPosted(sbn: StatusBarNotification?) {
+        val item = NotificationItem(
+            sbn?.notification?.extras?.getString("android.title") ?: "",
+            sbn?.notification?.extras?.getString("android.text") ?: "",
+            sbn?.packageName ?: "<Unknown>"
+        )
+        val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
 
-    override fun onCreate() {
-        super.onCreate()
+        intent.putExtra("notification_item", item)
 
+        sendBroadcast(intent)
     }
 
-    inner class NLServiceReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-
-        }
+    override fun onNotificationRemoved(sbn: StatusBarNotification?) {
+        super.onNotificationRemoved(sbn)
     }
 }
