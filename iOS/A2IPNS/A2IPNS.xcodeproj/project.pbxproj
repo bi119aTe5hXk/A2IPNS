@@ -15,6 +15,7 @@
 		8640924622F6A834006DE85C /* A2IPNSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640924522F6A834006DE85C /* A2IPNSUITests.swift */; };
 		8640925422F6A8AB006DE85C /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640925322F6A8AB006DE85C /* QRViewController.swift */; };
 		8640925822F6ADF2006DE85C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8640925722F6ADF2006DE85C /* UserNotifications.framework */; };
+		8640925A22F6BA3B006DE85C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640925922F6BA3B006DE85C /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		8640925322F6A8AB006DE85C /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		8640925522F6AC94006DE85C /* A2IPNS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = A2IPNS.entitlements; sourceTree = "<group>"; };
 		8640925722F6ADF2006DE85C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8640925922F6BA3B006DE85C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				8640925522F6AC94006DE85C /* A2IPNS.entitlements */,
 				8640922322F6A831006DE85C /* AppDelegate.swift */,
 				8640925322F6A8AB006DE85C /* QRViewController.swift */,
+				8640925922F6BA3B006DE85C /* HistoryViewController.swift */,
 				8640922922F6A831006DE85C /* Main.storyboard */,
 				8640922C22F6A834006DE85C /* Assets.xcassets */,
 				8640922E22F6A834006DE85C /* LaunchScreen.storyboard */,
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8640925A22F6BA3B006DE85C /* HistoryViewController.swift in Sources */,
 				8640922422F6A831006DE85C /* AppDelegate.swift in Sources */,
 				8640925422F6A8AB006DE85C /* QRViewController.swift in Sources */,
 			);
