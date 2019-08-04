@@ -8,38 +8,43 @@
 
 import UIKit
 import UserNotifications
+import CoreImage
 
 class QRViewController: UIViewController {
     @IBOutlet weak var imgQRCode: UIImageView!
+    @IBOutlet weak var tokenLabel:UILabel!
     var qrcodeImage: CIImage!
     let token = UserDefaults.standard.string(forKey: "pushtoken");
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
 
         // Do any additional setup after loading the view.
         if token != nil {
-            showQRCode();
+            self.tokenLabel.text = token!
+            let qrimage = generateQRCode(from: token!)
+            self.imgQRCode.image = qrimage
         }
         
     }
     
-    func showQRCode(){
-        print("showing qr")
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
         
-        if qrcodeImage == nil{
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
             
-            let data = token?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
-            
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            
-            filter?.setValue(data, forKey: "inputMessage")
-            filter?.setValue("Q", forKey: "inputCorrectionLevel")
-            
-            qrcodeImage = filter?.outputImage
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
         }
+        
+        return nil
     }
-
+    
     /*
     // MARK: - Navigation
 
