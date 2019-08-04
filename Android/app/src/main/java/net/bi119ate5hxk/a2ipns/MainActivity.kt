@@ -8,10 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
+import android.widget.CompoundButton
+import android.widget.Switch
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.system.measureNanoTime
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +26,21 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.actionToolbar))
 
-        val filter = IntentFilter("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
+        findViewById<Switch>(R.id.enableSwitch).setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (!isNotificationListenerEnabled(applicationContext)) {
+                    openNotificationListenerSettings()
+                }
 
-        registerReceiver(receiver, filter)
+                val filter = IntentFilter("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
+
+                registerReceiver(receiver, filter)
+            } else {
+                unregisterReceiver(receiver)
+            }
+        }
 
         initNotificationList()
-
-        if (!isNotificationListenerEnabled(applicationContext)) {
-            openNotificationListenerSettings()
-        }
     }
 
     fun isNotificationListenerEnabled(context: Context): Boolean {
@@ -55,11 +62,6 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = notificationItemListAdapter
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.actions, menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     inner class NotificationServiceReceiver : BroadcastReceiver() {
