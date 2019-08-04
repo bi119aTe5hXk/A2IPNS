@@ -1,14 +1,12 @@
 <?php
-    $updatetime = "20190804";
-    $key = pack('H*', "1234567890abcdefghijklmnopqrstuvwxyz");
-    $plaintext = "abcdefghijklmnopqrstuvwxyz0123456789";
+    include_once "cert_data.php";
 
-    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-    
-    $ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key,  $plaintext, MCRYPT_MODE_CBC, $iv);
-    $ciphertext = $iv . $ciphertext;
-    $ciphertext_base64 = base64_encode($ciphertext);
+    $cipher = "aes-256-gcm";
+    $ivlen = openssl_cipher_iv_length($cipher);
+    $iv = openssl_random_pseudo_bytes($ivlen);
+
+    $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+    $ciphertext_base64 = base64_encode($ciphertext_raw);
 
     $array = array(
         "time" => $updatetime ,
