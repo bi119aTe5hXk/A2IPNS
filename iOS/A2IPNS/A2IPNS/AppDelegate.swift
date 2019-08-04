@@ -23,14 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { (granted, error) in
             // Enable or disable features based on authorization.
             if granted {
-                print("Allowed")
+                print("APNS Allowed")
+                DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
+                }
             } else {
-                print("Didn't allowed")
+                print("APNS NOT ALLOWED.")
             }
         }
-        UserDefaults.standard.register(defaults: ["pushtoken":""])
-        
+        UserDefaults.standard.register(defaults: ["pushtoken": ""])
+
         return true
     }
 
@@ -55,20 +57,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
+
+
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken
-        deviceToken: Data) {
+                     deviceToken: Data) {
         //self.sendDeviceTokenToServer(data: deviceToken)
         let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
+        print("tokenis:" + token)
         UserDefaults.standard.set(token, forKey: "pushtoken")
     }
-    
+
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError
-        error: Error) {
+                     error: Error) {
         // Try again later.
+        print("getTokenErr:" + error.localizedDescription)
     }
 
 }

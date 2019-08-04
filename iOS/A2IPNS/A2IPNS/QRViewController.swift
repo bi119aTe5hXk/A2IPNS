@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class QRViewController: UIViewController {
     @IBOutlet weak var imgQRCode: UIImageView!
@@ -14,15 +15,19 @@ class QRViewController: UIViewController {
     let token = UserDefaults.standard.string(forKey: "pushtoken");
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
-        showQRCode();
+        if token != nil {
+            showQRCode();
+        }
+        
     }
     
     func showQRCode(){
+        print("showing qr")
         
-        
-        if qrcodeImage == nil && (token?.lengthOfBytes(using: .utf8))! > 0 {
+        if qrcodeImage == nil{
             
             let data = token?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
             
