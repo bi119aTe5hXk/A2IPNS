@@ -6,7 +6,7 @@
     $iv = openssl_random_pseudo_bytes($ivlen);
 
     $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv);
-    $ciphertext_base64 = base64_encode($ciphertext_raw);
+    $ciphertext_base64 = base64_encode($ciphertext_raw).":".$base64_encode($iv);
 
     $array = array(
         "time" => $updatetime ,
