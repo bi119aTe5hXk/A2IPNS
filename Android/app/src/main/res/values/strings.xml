@@ -2,5 +2,24 @@
     <string name="app_name">A2IPNS</string>
     <string name="service_name">A2IPNS Notification Listener</string>
     <string name="enable_switch_text">Enable Service</string>
-    <string name="action_options_title">Options</string>
+    <string name="pair_device_button_text">Pair device via QR code</string>
+    <string name="sync_auth_token_button_text">Synchronize APS authentication token</string>
+
+    <string name="notification_channel_name">A2IPNS</string>
+    <string name="notification_channel_description">A2IPNS Notification Service</string>
+    <string name="notification_running_text">A2IPNS Notification Service is running background</string>
+
+    <string name="toast_token_updated_message">APS authentication token was updated successfully</string>
+    <string name="toast_token_no_need_to_update_message">APS authentication token is latest.\nNo need to update.</string>
+    <string name="alert_token_download_error_message">APS authentication token cannot be synchronized.\nCheck Internet
+        connection and synchronize authentication token again.
+    </string>
+
+    <string name="alert_button_yes">Yes</string>
+    <string name="alert_button_no">No</string>
+
+    <string name="alert_no_device_token_title">No Device Token Set</string>
+    <string name="alert_no_device_token_message">The paired device token is not set.\n\nDo you want to pair your iOS
+        device now?
+    </string>
 </resources>

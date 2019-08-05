@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_key_enable_service">EnableService</string>
+    <string name="pref_key_auth_token">AuthToken</string>
+    <string name="pref_key_auth_token_update_date">AuthTokenUpdateDate</string>
+    <string name="pref_key_device_token">DeviceToken</string>
+</resources>
