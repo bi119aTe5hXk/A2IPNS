@@ -5,7 +5,7 @@
     $ivlen = openssl_cipher_iv_length($cipher);
     $iv = openssl_random_pseudo_bytes($ivlen);
 
-    $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+    $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv, $tag);
     $ciphertext_base64 = base64_encode($ciphertext_raw).":".base64_encode($tag).":".base64_encode($iv);
 
     $array = array(
