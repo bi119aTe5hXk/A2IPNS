@@ -21,7 +21,7 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/pairButton"
-            android:text="@string/pair_device_button_text"/>
+            android:text="@string/pair_device_button_text" android:onClick="pairiOSDeviceAction"/>
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/tokenSyncButton"

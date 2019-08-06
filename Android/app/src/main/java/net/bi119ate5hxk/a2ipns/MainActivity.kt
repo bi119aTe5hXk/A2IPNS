@@ -1,6 +1,8 @@
 package net.bi119ate5hxk.a2ipns
 
+import android.Manifest
 import android.content.*
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -10,6 +12,7 @@ import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -71,6 +74,20 @@ class MainActivity : AppCompatActivity() {
 
         // Update APS authentication token
         updateAPSAuthToken()
+    }
+
+    fun pairiOSDeviceAction(view: View) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(arrayOf(Manifest.permission.CAMERA), 0)
+        }
+
+        val intent = Intent(this, QRCodeActivity::class.java)
+
+        startActivity(intent)
     }
 
     fun updateAPSAuthTokenAction(view: View) {

@@ -9,8 +9,12 @@
     <string name="notification_channel_description">A2IPNS Notification Service</string>
     <string name="notification_running_text">A2IPNS Notification Service is running background</string>
 
+    <string name="toast_device_token_pair_success_message">iOS device paired successfully</string>
+    <string name="toast_device_token_camera_init_error">Camera initialization error: </string>
+
     <string name="toast_token_updated_message">APS authentication token was updated successfully</string>
-    <string name="toast_token_no_need_to_update_message">APS authentication token is latest.\nNo need to update.</string>
+    <string name="toast_token_no_need_to_update_message">APS authentication token is latest.\nNo need to update.
+    </string>
     <string name="alert_token_download_error_message">APS authentication token cannot be synchronized.\nCheck Internet
         connection and synchronize authentication token again.
     </string>
