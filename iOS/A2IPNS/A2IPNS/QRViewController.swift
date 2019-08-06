@@ -24,7 +24,10 @@ class QRViewController: UIViewController {
         // Do any additional setup after loading the view.
         if token != nil {
             self.tokenLabel.text = token!
-            let qrimage = generateQRCode(from: token!)
+            let qrDict:[String:String] = ["id":"A2IPNS","token":token!];
+            let data = try? JSONSerialization.data(withJSONObject: qrDict, options: [])
+            print("qrstr:" + String(data: data!, encoding: String.Encoding.utf8)!)
+            let qrimage = generateQRCode(from: String(data: data!, encoding: String.Encoding.utf8)!)
             self.imgQRCode.image = qrimage
         }
         
