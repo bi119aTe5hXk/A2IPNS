@@ -1,20 +1,15 @@
 package net.bi119ate5hxk.a2ipns
 
-import android.Manifest
 import android.content.*
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.provider.Settings
 import android.view.View
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -47,26 +42,25 @@ class MainActivity : AppCompatActivity() {
         // App settings
         AppHelper.Settings = PreferenceManager.getDefaultSharedPreferences(applicationContext)
 
-        findViewById<Switch>(R.id.enableSwitch).setOnCheckedChangeListener { _, isChecked ->
+        enableSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked && AppHelper.Settings!!.getString(getString(R.string.pref_key_device_token), null) == null) {
+                enableSwitch.isChecked = false
+
                 val builder = AlertDialog.Builder(this)
 
                 builder.setTitle(R.string.alert_no_device_token_title)
                     .setMessage(R.string.alert_no_device_token_message)
                     .setPositiveButton(R.string.alert_button_yes, DialogInterface.OnClickListener { _, _ ->
-
+                        pairiOSDeviceAction(enableSwitch)
                     })
                     .setNegativeButton(R.string.alert_button_no, null)
                     .create()
-            }
-
-            if (isChecked && AppHelper.Settings!!.getString(getString(R.string.pref_key_device_token), null) != null) {
+                    .show()
+            } else {
                 val prefEditor = AppHelper.Settings!!.edit()
 
                 prefEditor.putBoolean(getString(R.string.pref_key_enable_service), isChecked)
                     .commit()
-            } else if (isChecked) {
-                enableSwitch.isChecked = false
             }
         }
 
@@ -77,14 +71,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pairiOSDeviceAction(view: View) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), 0)
-        }
-
         val intent = Intent(this, QRCodeActivity::class.java)
 
         startActivity(intent)
@@ -107,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNotificationList() {
-        findViewById<RecyclerView>(R.id.notificationRecyclerView).apply {
+        notificationRecyclerView.apply {
             setHasFixedSize(true)
 
             layoutManager = LinearLayoutManager(this@MainActivity)
