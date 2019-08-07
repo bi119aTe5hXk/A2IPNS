@@ -12,6 +12,8 @@ import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import org.json.JSONException
+import org.json.JSONObject
 
 class QRCodeActivity : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
@@ -44,10 +46,12 @@ class QRCodeActivity : AppCompatActivity() {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                if (verifyReceivedToken(it.text)) {
+                val token = getDeviceToken(it.text)
+
+                if (token != null) {
                     val prefEditor = AppHelper.Settings!!.edit()
 
-                    prefEditor.putString(getString(R.string.pref_key_device_token), getDeviceToken(it.text))
+                    prefEditor.putString(getString(R.string.pref_key_device_token), token)
                         .commit()
 
                     Toast.makeText(
@@ -57,6 +61,8 @@ class QRCodeActivity : AppCompatActivity() {
                     ).show()
 
                     finish()
+                } else {
+                    codeScanner.startPreview()
                 }
             }
         }
@@ -85,13 +91,16 @@ class QRCodeActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    private fun verifyReceivedToken(text: String): Boolean {
-        // TODO
-        return true
-    }
+    private fun getDeviceToken(json: String): String? {
+        try {
+            val jsonObject = JSONObject(json)
 
-    private fun getDeviceToken(json: String): String {
-        // TODO
-        return json
+            when (jsonObject.getString("id") == getString(R.string.app_name)) {
+                true -> return jsonObject.getString("token")
+                false -> return null
+            }
+        } catch (_: JSONException) {
+            return null
+        }
     }
 }
