@@ -3,11 +3,7 @@ package net.bi119ate5hxk.a2ipns
 import android.os.Parcel
 import android.os.Parcelable
 
-class NotificationItem(title: String, text: String, source: String) : Parcelable {
-    val Title: String = title
-    val Text: String = text
-    val Source: String = source
-
+class NotificationItem(val title: String, val text: String, val source: String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -19,9 +15,9 @@ class NotificationItem(title: String, text: String, source: String) : Parcelable
     }
 
     override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeString(this.Title)
-        dest?.writeString(this.Text)
-        dest?.writeString(this.Source)
+        dest?.writeString(this.title)
+        dest?.writeString(this.text)
+        dest?.writeString(this.source)
     }
 
     companion object CREATOR : Parcelable.Creator<NotificationItem> {
@@ -33,6 +29,4 @@ class NotificationItem(title: String, text: String, source: String) : Parcelable
             return arrayOfNulls(size)
         }
     }
-
-
 }

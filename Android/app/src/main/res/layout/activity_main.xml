@@ -25,7 +25,7 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/tokenSyncButton"
-            android:text="@string/sync_auth_token_button_text" android:onClick="updateAPSAuthTokenAction"/>
+            android:text="@string/sync_auth_token_button_text" android:onClick="updateAPNSAuthTokenAction"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/notificationRecyclerView"/>

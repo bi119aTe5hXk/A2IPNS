@@ -2,16 +2,11 @@ package net.bi119ate5hxk.a2ipns
 
 import android.Manifest
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
+import com.budiyev.android.codescanner.*
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -49,7 +44,7 @@ class QRCodeActivity : AppCompatActivity() {
                 val token = getDeviceToken(it.text)
 
                 if (token != null) {
-                    val prefEditor = AppHelper.Settings!!.edit()
+                    val prefEditor = AppHelper.Settings.edit()
 
                     prefEditor.putString(getString(R.string.pref_key_device_token), token)
                         .commit()

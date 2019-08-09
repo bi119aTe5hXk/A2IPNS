@@ -1,6 +1,7 @@
 package net.bi119ate5hxk.a2ipns
 
 import android.util.Base64
+import org.json.JSONObject
 import javax.crypto.Cipher
 import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -24,5 +25,17 @@ internal object CryptoHelper {
         val decryptedData = cipher.doFinal(tag)
 
         return decryptedData.toString()
+    }
+
+    fun getAPNSBearerToken(authTokenJSON: String?): String? {
+        if (authTokenJSON != null) {
+            val authTokenPackage = JSONObject(authTokenJSON)
+
+
+
+            return ""
+        }
+
+        return ""
     }
 }

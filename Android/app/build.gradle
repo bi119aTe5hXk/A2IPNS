@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "net.bi119ate5hxk.a2ipns"
         minSdkVersion 21
@@ -17,7 +17,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -34,6 +34,12 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation('com.squareup.okhttp3:okhttp:4.0.1')
+    implementation 'com.android.volley:volley:1.1.1'
+    api 'io.jsonwebtoken:jjwt-api:0.10.7'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.7') {
+        exclude group: 'org.json', module: 'json' //provided by Android natively
+    }
 }

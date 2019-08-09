@@ -21,9 +21,9 @@ class NotificationListAdapter(private val notificationItemList: ArrayList<Notifi
 
     override fun onBindViewHolder(holder: NotificationListViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.notificationTitleTextView).text =
-            notificationItemList[position].Title
-        holder.itemView.findViewById<TextView>(R.id.notificationTextTextView).text = notificationItemList[position].Text
+            notificationItemList[position].title
+        holder.itemView.findViewById<TextView>(R.id.notificationTextTextView).text = notificationItemList[position].text
         holder.itemView.findViewById<TextView>(R.id.notificationSourceTextView).text =
-            notificationItemList[position].Source
+            notificationItemList[position].source
     }
 }

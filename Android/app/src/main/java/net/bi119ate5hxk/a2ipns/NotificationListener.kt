@@ -38,20 +38,39 @@ class NotificationListener : NotificationListenerService() {
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.notification_running_text))
                 .setContentIntent(pendingIntent)
-                .build())
+                .build()
+        )
 
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
-        if (AppHelper.Settings!!.getBoolean(getString(R.string.pref_key_enable_service), false)) {
+        if (AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)) {
             val item = NotificationItem(
                 sbn?.notification?.extras?.getString("android.title") ?: "",
                 sbn?.notification?.extras?.getString("android.text") ?: "",
                 sbn?.packageName ?: "<Unknown>"
             )
 
-            val json = generateAppleJson(item)
+            CryptoHelper.getAPNSBearerToken(AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null))
+
+//            val request = Request.Builder()
+//                .url(
+//                    AppHelper.APNSServerURL + "/3/device/" + AppHelper.Settings.getString(
+//                        getString(R.string.pref_key_device_token),
+//                        null
+//                    )
+//                )
+//                .addHeader(
+//                    "authorization",
+//                    "bearer " + AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
+//                )
+//                .addHeader("apns-push-type", "alert")
+//                .addHeader("apns-topic", "net.bi119ate5hxk.a2ipns")
+//                .post(generateAppleJSONObject(item).toRequestBody("application/json; charset=utf-8".toMediaType()))
+//                .build()
+
+//            AppHelper.HttpClient.newCall(request)
 
             val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
 
@@ -61,22 +80,22 @@ class NotificationListener : NotificationListenerService() {
         }
     }
 
-    private fun generateAppleJson(item: NotificationItem): String {
+    private fun generateAppleJSONObject(item: NotificationItem): String {
         val rootJsonObject = JSONObject()
 
         rootJsonObject.put("aps", JSONObject())
 
-        val apsJsonObject = rootJsonObject.getJSONObject("aps")
+        val apnsJsonObject = rootJsonObject.getJSONObject("aps")
 
-        apsJsonObject.put("alert", JSONObject())
+        apnsJsonObject.put("alert", JSONObject())
 
-        val alertJsonObject = apsJsonObject.getJSONObject("alert")
+        val alertJsonObject = apnsJsonObject.getJSONObject("alert")
 
-        alertJsonObject.put("title", item.Title)
-        alertJsonObject.put("subtitle", item.Source)
-        alertJsonObject.put("body", item.Text)
+        alertJsonObject.put("title", item.title)
+        alertJsonObject.put("subtitle", item.source)
+        alertJsonObject.put("body", item.text)
 
-        apsJsonObject.put("sound", "default")
+        apnsJsonObject.put("sound", "default")
 
         return rootJsonObject.toString()
     }

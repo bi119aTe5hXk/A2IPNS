@@ -1,25 +1,20 @@
 package net.bi119ate5hxk.a2ipns
 
 import android.content.*
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+import com.android.volley.toolbox.JsonObjectRequest
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONObject
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
-
     val notificationItemList = ArrayList<NotificationItem>()
     val notificationItemListAdapter = NotificationListAdapter(notificationItemList)
     val receiver = NotificationServiceReceiver()
@@ -40,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(receiver, filter)
 
         // App settings
-        AppHelper.Settings = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        AppHelper.init(applicationContext)
 
         enableSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked && AppHelper.Settings!!.getString(getString(R.string.pref_key_device_token), null) == null) {
+            if (isChecked && AppHelper.Settings.getString(getString(R.string.pref_key_device_token), null) == null) {
                 enableSwitch.isChecked = false
 
                 val builder = AlertDialog.Builder(this)
@@ -57,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                     .create()
                     .show()
             } else {
-                val prefEditor = AppHelper.Settings!!.edit()
+                val prefEditor = AppHelper.Settings.edit()
 
                 prefEditor.putBoolean(getString(R.string.pref_key_enable_service), isChecked)
                     .commit()
@@ -66,8 +61,10 @@ class MainActivity : AppCompatActivity() {
 
         initNotificationList()
 
-        // Update APS authentication token
-        updateAPSAuthToken()
+        // Update APNS authentication token
+        updateAPNSAuthToken()
+
+        enableSwitch.isChecked = AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)
     }
 
     fun pairiOSDeviceAction(view: View) {
@@ -76,8 +73,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun updateAPSAuthTokenAction(view: View) {
-        updateAPSAuthToken()
+    fun updateAPNSAuthTokenAction(view: View) {
+        updateAPNSAuthToken()
     }
 
     private fun isNotificationListenerEnabled(context: Context): Boolean {
@@ -101,29 +98,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateAPSAuthToken() {
+    private fun updateAPNSAuthToken() {
         mainLinearLayout.isEnabled = false
 
-        val queue = Volley.newRequestQueue(this)
-        val stringRequest =
-            StringRequest(Request.Method.GET, ExternalData.APSAuthTokenURL, Response.Listener<String> { response ->
-                val jsonObject = JSONObject(response)
-
-                if (jsonObject.getString("time") != AppHelper.Settings!!.getString(
+        val request = JsonObjectRequest(Request.Method.GET, ExternalData.APNSAuthTokenURL, null,
+            Response.Listener { response ->
+                if (response.getString("time") != AppHelper.Settings.getString(
                         getString(R.string.pref_key_auth_token_update_date),
                         null
                     )
                 ) {
-                    val certData = jsonObject.getString("cert").split(":")
+                    val certData = response.getString("cert").split(":")
                     val token =
                         CryptoHelper.decrypt(certData[0], certData[1], certData[2], ExternalData.DecryptionSecret)
 
-                    val prefEditor = AppHelper.Settings!!.edit()
+                    val prefEditor = AppHelper.Settings.edit()
 
                     prefEditor.putString(getString(R.string.pref_key_auth_token), token)
                         .putString(
                             getString(R.string.pref_key_auth_token_update_date),
-                            jsonObject.getString("time")
+                            response.getString("time")
                         )
                         .commit()
 
@@ -138,14 +132,14 @@ class MainActivity : AppCompatActivity() {
                         .show()
                 }
             },
-                Response.ErrorListener {
-                    AlertDialog.Builder(this)
-                        .setMessage(R.string.alert_token_download_error_message)
-                        .setPositiveButton("OK", null)
-                        .show()
-                })
+            Response.ErrorListener { error ->
+                AlertDialog.Builder(this)
+                    .setMessage(R.string.alert_token_download_error_message)
+                    .setPositiveButton("OK", null)
+                    .show()
+            })
 
-        queue.add(stringRequest)
+        AppHelper.HttpRequestQueue.add(request)
     }
 
     inner class NotificationServiceReceiver : BroadcastReceiver() {
