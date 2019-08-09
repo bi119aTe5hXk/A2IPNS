@@ -26,4 +26,4 @@ Android to iOS push notification services
 
 2. Open A2IPNS app on your android device, scan the QR code on your iOS device using your Android device.
 
-3. Wait for your Android device to receive any notification, it should automatic shows up both your Android and iOS device.
+3. Wait for your Android device to receive any notification, it should automatic shows up both on your Android and iOS devices.
