@@ -1,7 +1,14 @@
 package net.bi119ate5hxk.a2ipns
 
 import android.util.Base64
+import io.jsonwebtoken.Jwts
 import org.json.JSONObject
+import java.nio.charset.Charset
+import java.security.KeyFactory
+import java.security.PrivateKey
+import java.security.interfaces.ECPrivateKey
+import java.security.spec.PKCS8EncodedKeySpec
+import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
@@ -16,7 +23,7 @@ internal object CryptoHelper {
 
         cipher.init(
             Cipher.DECRYPT_MODE,
-            SecretKeySpec(keyText.toByteArray(), "AES"),
+            SecretKeySpec(keyText.toByteArray(Charsets.US_ASCII), "AES"),
             GCMParameterSpec(128, iv)
         )
 
@@ -24,18 +31,38 @@ internal object CryptoHelper {
         cipher.update(cipherData)
         val decryptedData = cipher.doFinal(tag)
 
-        return decryptedData.toString()
+        // Must specify Charset, or toString() returns internal object name
+        return decryptedData.toString(Charset.defaultCharset())
     }
 
-    fun getAPNSBearerToken(authTokenJSON: String?): String? {
-        if (authTokenJSON != null) {
-            val authTokenPackage = JSONObject(authTokenJSON)
+    fun getAPNSBearerToken(authTokenPackage: JSONObject?): String? {
+        if (authTokenPackage != null) {
+            val key = getPrivateKeyFromString(authTokenPackage.getString("authKey"))
+            val jwt = Jwts.builder()
+                .setHeaderParam("kid", authTokenPackage.getString("authkeyid"))
+                .setIssuer(authTokenPackage.getString("teamid"))
+                .setIssuedAt(Calendar.getInstance(TimeZone.getTimeZone("UTC")).time)
+                .signWith(key)
+                .compact()
 
-
-
-            return ""
+            return jwt
         }
 
-        return ""
+        return null
+    }
+
+    fun getPrivateKeyFromString(keyPEM: String): PrivateKey {
+        val bytes = Base64.decode(
+            Base64.decode(keyPEM, Base64.DEFAULT)
+                .toString(Charset.defaultCharset())
+                .replace("-----BEGIN PRIVATE KEY-----\n", "")
+                .replace("-----END PRIVATE KEY-----", ""),
+            Base64.DEFAULT
+        )
+
+        // ES256 = ECDSA using P-256 curve and SHA-256 hash algorithm
+        val keyFactory = KeyFactory.getInstance("EC")
+
+        return keyFactory.generatePrivate(PKCS8EncodedKeySpec(bytes)) as ECPrivateKey
     }
 }

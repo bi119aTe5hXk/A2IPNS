@@ -9,7 +9,10 @@ import android.os.Build
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import androidx.core.app.NotificationCompat
+import com.android.volley.Request
+import com.android.volley.Response
 import org.json.JSONObject
+import org.xlfdll.android.network.JsonObjectRequestWithCustomHeaders
 
 class NotificationListener : NotificationListenerService() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -52,25 +55,34 @@ class NotificationListener : NotificationListenerService() {
                 sbn?.packageName ?: "<Unknown>"
             )
 
-            CryptoHelper.getAPNSBearerToken(AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null))
+            val authToken = AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
 
-//            val request = Request.Builder()
-//                .url(
-//                    AppHelper.APNSServerURL + "/3/device/" + AppHelper.Settings.getString(
-//                        getString(R.string.pref_key_device_token),
-//                        null
-//                    )
-//                )
-//                .addHeader(
-//                    "authorization",
-//                    "bearer " + AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
-//                )
-//                .addHeader("apns-push-type", "alert")
-//                .addHeader("apns-topic", "net.bi119ate5hxk.a2ipns")
-//                .post(generateAppleJSONObject(item).toRequestBody("application/json; charset=utf-8".toMediaType()))
-//                .build()
+            if (authToken != null) {
+                val authTokenPackage = JSONObject(authToken)
+                val jwt = CryptoHelper.getAPNSBearerToken(authTokenPackage)
+                val headers = HashMap<String, String>()
 
-//            AppHelper.HttpClient.newCall(request)
+                headers["Authorization"] = "bearer $jwt"
+                headers["apns-push-type"] = "alert"
+                headers["apns-topic"] = authTokenPackage.getString("id")
+
+                if (jwt != null) {
+                    val jsonObject = generateAppleJSONObject(item)
+                    val request = JsonObjectRequestWithCustomHeaders(Request.Method.POST,
+                        AppHelper.APNSServerURL + "/3/device/${AppHelper.Settings.getString(
+                            getString(R.string.pref_key_device_token),
+                            ""
+                        )}",
+                        headers,
+                        jsonObject,
+                        Response.Listener { response ->
+                        },
+                        Response.ErrorListener { error ->
+                        })
+
+                    AppHelper.HttpRequestQueue.add(request)
+                }
+            }
 
             val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
 
@@ -80,7 +92,7 @@ class NotificationListener : NotificationListenerService() {
         }
     }
 
-    private fun generateAppleJSONObject(item: NotificationItem): String {
+    private fun generateAppleJSONObject(item: NotificationItem): JSONObject {
         val rootJsonObject = JSONObject()
 
         rootJsonObject.put("aps", JSONObject())
@@ -97,6 +109,6 @@ class NotificationListener : NotificationListenerService() {
 
         apnsJsonObject.put("sound", "default")
 
-        return rootJsonObject.toString()
+        return rootJsonObject
     }
 }
