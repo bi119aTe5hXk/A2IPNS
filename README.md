@@ -17,14 +17,14 @@ Android to iOS push notification services
 
 6. Create an ExternalData.kt file and add your server URL and decryption secret.
 
-7. Build an Android project.
+7. Build the Android project.
 
 
 ## How to use
 
 1. Open A2IPNS app on your iOS device, allow for receiving the push notification.
 
-2. Open A2IPNS app on your android device, allow for getting notification. Scan the QR code on your iOS device using your Android device.
+2. Open A2IPNS app on your android device, allow for notification permission. Scan the QR code on your iOS device using your Android device to pair.
 
 3. Wait for your Android device to receive any notification, it should automatic shows up both on your Android and iOS devices.
 
