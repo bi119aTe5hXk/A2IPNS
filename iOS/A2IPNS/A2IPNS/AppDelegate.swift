@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         UserDefaults.standard.register(defaults: ["pushtoken": ""])
-
+        UserDefaults.standard.register(defaults: ["notification_history": []])
         return true
     }
 
@@ -74,6 +74,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Try again later.
         print("getTokenErr:" + error.localizedDescription)
     }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print(userInfo)
+        
+       var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
+        
+        let aps = userInfo["aps"] as? [AnyHashable: Any]
+        let alert = aps?["alert"] as? Dictionary<String, Any>
+        
+        notifyarr!.append([alert])
+        UserDefaults.standard.set(notifyarr, forKey: "notification_history")
+    }
+    
 
 }
 

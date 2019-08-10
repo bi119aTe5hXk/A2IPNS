@@ -9,7 +9,8 @@
 import UIKit
 
 class HistoryViewController: UITableViewController {
-
+    var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,29 +19,54 @@ class HistoryViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let refreshControl = UIRefreshControl.init()
+        refreshControl.addTarget(self, action: #selector(self.onRefresh), for: UIControl.Event.valueChanged)
+        self.refreshControl = refreshControl
+        
+        self.onRefresh()
+        
+    }
+    @objc func onRefresh() {
+        self.refreshControl?.endRefreshing()
+        notifyarr = UserDefaults.standard.array(forKey: "notification_history")
+        //print(notifyarr as Any)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return notifyarr!.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         // Configure the cell...
+        let row = indexPath.row
+        let theArr = notifyarr![row] as! Array<Any>
+        let dicInRow:Dictionary = theArr[0] as! Dictionary<String, Any>
+        cell.textLabel?.text = dicInRow["body"] as? String
+        cell.textLabel?.numberOfLines = 5
+        
+        let subtitletext = (dicInRow["title"] as! String) + " - " + (dicInRow["subtitle"] as! String)
+        cell.detailTextLabel?.text = subtitletext
+        
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
 
     /*
     // Override to support conditional editing of the table view.
