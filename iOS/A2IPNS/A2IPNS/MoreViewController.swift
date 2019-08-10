@@ -1,16 +1,15 @@
 //
-//  HistoryViewController.swift
+//  MoreViewController.swift
 //  A2IPNS
 //
-//  Created by billgateshxk on 2019/08/04.
+//  Created by billgateshxk on 2019/08/10.
 //  Copyright © 2019 bi119aTe5hXk. All rights reserved.
 //
 
 import UIKit
 
-class HistoryViewController: UITableViewController {
-    var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
-    
+class MoreViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,68 +18,35 @@ class HistoryViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        let refreshControl = UIRefreshControl.init()
-        refreshControl.addTarget(self, action: #selector(self.onRefresh), for: UIControl.Event.valueChanged)
-        self.refreshControl = refreshControl
-        
-        self.onRefresh()
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.onRefresh()
-    }
-    @objc func onRefresh() {
-        self.refreshControl?.endRefreshing()
-        notifyarr = UserDefaults.standard.array(forKey: "notification_history")
-        //print(notifyarr as Any)
-        notifyarr?.reverse()
-        self.tableView.reloadData()
     }
 
+    @IBAction func githubpage(_ sender: Any) {
+        let url = URL(string:"https://github.com/bi119aTe5hXk/A2IPNS")
+        if( UIApplication.shared.canOpenURL(url!) ) {
+            UIApplication.shared.open(url!)
+        }
+    }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return notifyarr!.count
-    }
-
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        let row = indexPath.row
-        let theArr = notifyarr![row] as! Array<Any>
-        let dicInRow:Dictionary = theArr[0] as! Dictionary<String, Any>
-        cell.textLabel?.text = dicInRow["body"] as? String
-        //cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.numberOfLines = cell.textLabel?.numberOfLines == 0 ? 1 : 0
-        
-        let subtitletext = (dicInRow["subtitle"] as! String) + " - " + (dicInRow["title"] as! String)
-        cell.detailTextLabel?.text = subtitletext
-        
 
         return cell
     }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath) {
-            let label = cell.textLabel
-            tableView.beginUpdates()
-            label!.numberOfLines = label!.numberOfLines == 0 ? 1 : 0
-            tableView.endUpdates()
-        }
-    }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
