@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.android.volley.Request
 import com.android.volley.Response
@@ -81,6 +82,8 @@ class NotificationListener : NotificationListenerService() {
                         })
 
                     AppHelper.HttpRequestQueue.add(request)
+
+                    Log.i(getString(R.string.app_name), "Message from ${item.source}")
                 }
             }
 

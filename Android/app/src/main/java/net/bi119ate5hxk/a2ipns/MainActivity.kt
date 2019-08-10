@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     val notificationItemList = ArrayList<NotificationItem>()
     val notificationItemListAdapter = NotificationListAdapter(notificationItemList)
-    val receiver = NotificationServiceReceiver()
+    private val receiver = NotificationServiceReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +65,12 @@ class MainActivity : AppCompatActivity() {
         updateAPNSAuthToken()
 
         enableSwitch.isChecked = AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(receiver)
+
+        super.onDestroy()
     }
 
     fun pairiOSDeviceAction(view: View) {
