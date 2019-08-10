@@ -18,7 +18,7 @@ class HistoryViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.
         
         let refreshControl = UIRefreshControl.init()
         refreshControl.addTarget(self, action: #selector(self.onRefresh), for: UIControl.Event.valueChanged)
@@ -37,7 +37,12 @@ class HistoryViewController: UITableViewController {
         notifyarr?.reverse()
         self.tableView.reloadData()
     }
-
+    @IBAction func clearList(_ sender: Any) {
+        notifyarr = []
+        UserDefaults.standard.set([], forKey: "notification_history")
+        self.onRefresh()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -111,7 +111,7 @@ class NotificationListener : NotificationListenerService() {
         alertJsonObject.put("title", item.title)
         alertJsonObject.put("subtitle", item.source)
         alertJsonObject.put("body", item.text)
-
+        apnsJsonObject.put("content-available", 1)
         apnsJsonObject.put("sound", "default")
 
         return rootJsonObject

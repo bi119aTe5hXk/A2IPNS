@@ -120,7 +120,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="history" id="UyV-sE-kTG"/>
-                    <navigationItem key="navigationItem" title="History" id="ydn-G6-luJ"/>
+                    <navigationItem key="navigationItem" title="History" id="ydn-G6-luJ">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="D1Z-xS-YkV">
+                            <connections>
+                                <action selector="clearList:" destination="XKz-Fm-f0k" id="LNM-cN-s2e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSY-eu-bh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

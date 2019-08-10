@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("APNS Allowed")
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
+                    //UIApplication.shared.registerUserNotificationSettings(center)
                 }
             } else {
                 print("APNS NOT ALLOWED.")
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UserDefaults.standard.register(defaults: ["pushtoken": ""])
         UserDefaults.standard.register(defaults: ["notification_history": []])
+        
         return true
     }
 
@@ -75,15 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("getTokenErr:" + error.localizedDescription)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
+        //background
         addNotificationToArr(userInfo: userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        //foreground
         addNotificationToArr(userInfo: userInfo)
     }
     func addNotificationToArr(userInfo:[AnyHashable : Any]){
         print(userInfo)
-        
         var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
         
         let aps = userInfo["aps"] as? [AnyHashable: Any]
@@ -93,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(notifyarr, forKey: "notification_history")
         
     }
+    
 
 }
 
