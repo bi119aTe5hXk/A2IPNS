@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:padding="5sp">
 
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/notificationTitleTextView" android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/notificationTitleTextView" android:textSize="18sp"
             android:textStyle="bold"/>
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/notificationTextTextView"/>
+            android:layout_height="wrap_content" android:id="@+id/notificationTextTextView" android:textSize="16sp"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/notificationSourceTextView" android:textSize="12sp"

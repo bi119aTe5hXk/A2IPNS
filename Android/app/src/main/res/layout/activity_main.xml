@@ -12,21 +12,19 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            android:minHeight="?attr/actionBarSize" android:id="@+id/actionToolbar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:minHeight="?attr/actionBarSize" android:id="@+id/actionToolbar"/>
     <Switch
             android:layout_width="match_parent"
-            android:layout_height="60dp" android:id="@+id/enableSwitch" android:text="@string/enable_switch_text"/>
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/pairButton"
-            android:text="@string/pair_device_button_text" android:onClick="pairiOSDeviceAction"/>
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/tokenSyncButton"
-            android:text="@string/sync_auth_token_button_text" android:onClick="updateAPNSAuthTokenAction"/>
+            android:layout_height="wrap_content" android:id="@+id/enableSwitch"
+            android:text="@string/switch_enable_text" android:layout_marginTop="15sp"
+            android:layout_marginBottom="15sp"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/notificationRecyclerView"/>
+            android:layout_height="0dp" android:id="@+id/notificationRecyclerView" android:layout_weight="1">
+    </androidx.recyclerview.widget.RecyclerView>
+    <Button
+            android:text="@string/button_clear_history_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/clearHistoryButton"
+            android:onClick="clearHistoryAction"/>
 </LinearLayout>
