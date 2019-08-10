@@ -81,7 +81,9 @@ class NotificationListener : NotificationListenerService() {
                         Response.ErrorListener { error ->
                         })
 
-                    AppHelper.HttpRequestQueue.add(request)
+                    if (!ExternalData.MockDebugMode) {
+                        AppHelper.HttpRequestQueue.add(request)
+                    }
 
                     Log.i(getString(R.string.app_name), "Message from ${item.source}")
                 }
