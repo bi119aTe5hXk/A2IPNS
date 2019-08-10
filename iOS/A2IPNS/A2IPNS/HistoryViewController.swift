@@ -27,10 +27,14 @@ class HistoryViewController: UITableViewController {
         self.onRefresh()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.onRefresh()
+    }
     @objc func onRefresh() {
         self.refreshControl?.endRefreshing()
         notifyarr = UserDefaults.standard.array(forKey: "notification_history")
         //print(notifyarr as Any)
+        notifyarr?.reverse()
         self.tableView.reloadData()
     }
 
@@ -55,7 +59,8 @@ class HistoryViewController: UITableViewController {
         let theArr = notifyarr![row] as! Array<Any>
         let dicInRow:Dictionary = theArr[0] as! Dictionary<String, Any>
         cell.textLabel?.text = dicInRow["body"] as? String
-        cell.textLabel?.numberOfLines = 5
+        //cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.numberOfLines = cell.textLabel?.numberOfLines == 0 ? 1 : 0
         
         let subtitletext = (dicInRow["title"] as! String) + " - " + (dicInRow["subtitle"] as! String)
         cell.detailTextLabel?.text = subtitletext
@@ -64,9 +69,24 @@ class HistoryViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        //let height = lines(label:cell.textLabel!)
+//        //print(height)
+//        return 60
+//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            let label = cell.textLabel
+            tableView.beginUpdates()
+            label!.numberOfLines = label!.numberOfLines == 0 ? 1 : 0
+            tableView.endUpdates()
+        }
     }
+    
 
     /*
     // Override to support conditional editing of the table view.

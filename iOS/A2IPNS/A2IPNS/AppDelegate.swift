@@ -76,17 +76,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        addNotificationToArr(userInfo: userInfo)
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        addNotificationToArr(userInfo: userInfo)
+    }
+    func addNotificationToArr(userInfo:[AnyHashable : Any]){
         print(userInfo)
         
-       var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
+        var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
         
         let aps = userInfo["aps"] as? [AnyHashable: Any]
         let alert = aps?["alert"] as? Dictionary<String, Any>
         
         notifyarr!.append([alert])
         UserDefaults.standard.set(notifyarr, forKey: "notification_history")
+        
     }
-    
 
 }
 
