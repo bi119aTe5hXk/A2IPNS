@@ -1,6 +1,11 @@
 package net.bi119ate5hxk.a2ipns
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.*
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
@@ -9,6 +14,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,6 +74,12 @@ class MainActivity : AppCompatActivity() {
 
                 prefEditor.putBoolean(getString(R.string.pref_key_enable_service), isChecked)
                     .commit()
+
+                if (isChecked) {
+                    showNotificationIcon()
+                } else {
+                    hideNotificationIcon()
+                }
             }
         }
 
@@ -123,6 +135,45 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = notificationItemListAdapter
         }
+    }
+
+    private fun showNotificationIcon() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                AppHelper.NOTIFICATION_CHANNEL_ID,
+                getString(R.string.notification_channel_name),
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+
+            notificationChannel.description = getString(R.string.notification_channel_description)
+
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+
+        val notificationIntent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
+
+        val notification = NotificationCompat.Builder(this, AppHelper.NOTIFICATION_CHANNEL_ID)
+            .setOngoing(true)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(getString(R.string.app_title))
+            .setContentText(getString(R.string.notification_running_text))
+            .setContentIntent(pendingIntent)
+            .build()
+
+        notification.flags = notification.flags or Notification.FLAG_NO_CLEAR or Notification.FLAG_ONGOING_EVENT
+
+        val notifier = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notifier.notify(AppHelper.NOTIFICATION_ID, notification)
+    }
+
+    private fun hideNotificationIcon() {
+        val notifier = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notifier.cancel(AppHelper.NOTIFICATION_ID)
     }
 
     inner class NotificationServiceReceiver : BroadcastReceiver() {

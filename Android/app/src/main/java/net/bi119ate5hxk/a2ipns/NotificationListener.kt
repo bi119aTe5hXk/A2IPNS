@@ -1,5 +1,6 @@
 package net.bi119ate5hxk.a2ipns
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -16,38 +17,6 @@ import org.json.JSONObject
 import org.xlfdll.android.network.JsonObjectRequestWithCustomHeaders
 
 class NotificationListener : NotificationListenerService() {
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(
-                AppHelper.NOTIFICATION_CHANNEL_ID,
-                getString(R.string.notification_channel_name),
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-
-            notificationChannel.description = getString(R.string.notification_channel_description)
-
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
-
-        val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
-
-        startForeground(
-            AppHelper.NOTIFICATION_ID,
-            NotificationCompat.Builder(this, AppHelper.NOTIFICATION_CHANNEL_ID)
-                .setOngoing(true)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.notification_running_text))
-                .setContentIntent(pendingIntent)
-                .build()
-        )
-
-        return super.onStartCommand(intent, flags, startId)
-    }
-
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         if (AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)) {
             val item = NotificationItem(
@@ -95,6 +64,8 @@ class NotificationListener : NotificationListenerService() {
 
             sendBroadcast(intent)
         }
+
+        super.onNotificationPosted(sbn)
     }
 
     private fun generateAppleJSONObject(item: NotificationItem): JSONObject {
