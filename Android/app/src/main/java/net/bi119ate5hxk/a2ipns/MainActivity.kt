@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.actionToolbar))
 
+        // Has to set title here, as manifest's label attributes do not work consistently
+        this.title = getString(R.string.app_title)
+
         // Notification listener and receiver initialization
         if (!isNotificationListenerEnabled(applicationContext)) {
             openNotificationListenerSettings()
