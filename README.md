@@ -1,9 +1,7 @@
-# A2IPNS
-Android to iOS push notification services
+# Android to Push Notification Services
+An app series to enable Android notification redirection to other platforms (iOS, Android, etc.)
 
--------------------------------
-
-## How to build
+## How to Build
 
 1. Add a new Explicit App ID in your Apple developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns). (You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services, it must be explicit. And don't forget to check the box in Push Notifications under the Capabilities)
 
@@ -20,7 +18,7 @@ Android to iOS push notification services
 7. Build the Android project.
 
 
-## How to use
+## How to Use
 
 1. Open A2IPNS app on your iOS device, allow for receiving the push notification.
 
@@ -29,6 +27,9 @@ Android to iOS push notification services
 3. Wait for your Android device to receive any notification, it should automatic shows up both on your Android and iOS devices.
 
 --------------------------------------
-## Special thanks
+## License / Contributors
 
-[Xlfdll](https://github.com/xlfdll) for most of Android and php part.
+(C) 2019 [bi119aTe5hXk](https://blog.bi119ate5hxk.net) (iOS, PHP, Icon Design)
+(C) 2019 [Xlfdll Workstation](https://xlfdll.github.io) (Android, PHP, Icon Design)
+
+bi119aTe5hXk has the right of the explanation on licensing options for the whole system.
