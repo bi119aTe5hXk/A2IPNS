@@ -40,7 +40,7 @@ internal object ExternalData {
 
 3. Enable the service on Android app.
 
-4. Wait for notifications in your Android device. They should be automatic delivered to your iOS devices momentarily.
+4. Wait for notifications showing up on your Android device. They should be automatically delivered to your iOS devices momentarily.
 
 ## License / Contributors
 
