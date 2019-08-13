@@ -28,7 +28,7 @@ An app series to enable Android notification redirection to other platforms (iOS
 
 ## License / Contributors
 
-(C) 2019 [bi119aTe5hXk](https://blog.bi119ate5hxk.net) (iOS, PHP, Icon Design)
+(C) 2019 [bi119aTe5hXk](https://blog.bi119ate5hxk.net) (iOS, PHP, Icon Design (Initial))
 
 (C) 2019 [Xlfdll Workstation](https://xlfdll.github.io) (Android, PHP, Icon Design)
 
