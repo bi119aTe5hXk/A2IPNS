@@ -1,30 +1,46 @@
-# Android to Push Notification Services
-An app series to enable Android notification redirection to other platforms (iOS, Android, etc.)
+# Android to iOS Push Notification Services
+An app series to enable Android notification redirection to iOS platforms
 
 ## How to Build
 
-1. Add a new Explicit App ID in your Apple developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns). (You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services, it must be explicit. And don't forget to check the box in Push Notifications under the Capabilities)
+1. Add a new Explicit App ID in your Apple Developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns).
 
-2. Edit Web/cert_data.php file. Then upload cert.php, cert_data.php and .p8 files to your server. It requires OpenSSL and php7.1 installed and this only require once for save authentication token to Android app at the first time launch.
+    You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services. The App ID must be explicit. Don't forget to check the box in Push Notifications under Capabilities.
 
-3. Generate a Provisioning Profile with the Explicit App ID. And download the .mobileprovision file.
+2. Edit Web/cert_data.php file by replacing $authKey, and [teamid, authkeyid, id] in the array (id is the App ID added in step 1). Then upload cert.php, cert_data.php and .p8 files to your server. Notice that this requires PHP 7.1 or later versions with OpenSSL extension installed. This process only needs to be done once to provide authentication token to Android app at launch.
 
-4. Import the .mobileprovision file into Xcode and build.
+3. Generate a Provisioning Profile with the Explicit App ID, and download the .mobileprovision file.
 
-5. Open Android project in Android Studio.
+4. Import .mobileprovision file into Xcode and build.
 
-6. Create an ExternalData.kt file and add your server URL and decryption secret.
+5. Open the Android project in Android Studio.
 
-7. Build the Android project.
+6. Create an ExternalData.kt file with the following code structures, and add your server URL and decryption secret:
+
+```
+package net.bi119ate5hxk.a2ipns
+
+internal object ExternalData {
+    // true - Create Apple Push Notification JSON payload but do not send
+    // false - Production Mode. Send actual JSON payload to Apple Push Notification Service
+    const val MockDebugMode = true
+    const val APNSAuthTokenURL = <Your Server URL: String>
+    const val DecryptionSecret = <Your Decryption Secret: String>
+}
+```
+
+7. Build the Android project and test.
 
 
 ## How to Use
 
-1. Open A2IPNS app on your iOS device, allow for receiving the push notification.
+1. Open A2IPNS app on your iOS device to enable receiving the push notification.
 
-2. Open A2IPNS app on your android device, allow for notification permission. Scan the QR code on your iOS device using your Android device to pair.
+2. Open A2IPNS app on your Android device, and grant notification permissions. Scan the QR code shown on your iOS device using your Android device to pair two devices.
 
-3. Wait for your Android device to receive any notification, it should automatic shows up both on your Android and iOS devices.
+3. Enable the service on Android app.
+
+4. Wait for notifications in your Android device. They should be automatic delivered to your iOS devices momentarily.
 
 ## License / Contributors
 
