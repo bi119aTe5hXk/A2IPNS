@@ -12,6 +12,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".AppListActivity"
+                  android:parentActivityName=".SettingsActivity"
+                  android:windowSoftInputMode="adjustResize">
+        </activity>
         <activity
                 android:name=".SettingsActivity"
                 android:label="@string/title_activity_settings"
@@ -32,8 +36,8 @@
 
         <service
                 android:name=".NotificationListener"
-                android:label="@string/app_name"
                 android:icon="@drawable/ic_notification"
+                android:label="@string/app_name"
                 android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService"/>

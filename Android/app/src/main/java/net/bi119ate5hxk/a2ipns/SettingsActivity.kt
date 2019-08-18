@@ -1,7 +1,9 @@
 package net.bi119ate5hxk.a2ipns
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,11 +18,17 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        setSupportActionBar(findViewById(R.id.actionToolbar))
+
+        this.title = getString(R.string.action_settings)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.settings, SettingsFragment())
             .commit()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
@@ -40,6 +48,12 @@ class SettingsActivity : AppCompatActivity() {
             findPreference<Preference>(getString(R.string.pref_ns_key_sync_auth_token))?.onPreferenceClickListener =
                 Preference.OnPreferenceClickListener {
                     ViewHelper.updateAPNSAuthToken(requireContext())
+
+                    true
+                }
+            findPreference<Preference>(getString(R.string.pref_ns_key_select_apps))?.onPreferenceClickListener =
+                Preference.OnPreferenceClickListener {
+                    startActivity(Intent(requireContext(), AppListActivity::class.java))
 
                     true
                 }

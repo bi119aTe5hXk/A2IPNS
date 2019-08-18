@@ -18,9 +18,17 @@ internal object AppHelper {
     lateinit var Settings: SharedPreferences
     lateinit var HttpRequestQueue: RequestQueue
 
+    var isLaunched = false
+
     fun init(context: Context) {
         if (!(::Settings.isInitialized)) {
             Settings = PreferenceManager.getDefaultSharedPreferences(context)
+
+            if (Settings.getStringSet(context.getString(R.string.pref_key_selected_apps), null) == null) {
+                Settings.edit()
+                    .putStringSet(context.getString(R.string.pref_key_selected_apps), HashSet<String>())
+                    .apply()
+            }
         }
 
         if (!(::HttpRequestQueue.isInitialized)) {

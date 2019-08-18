@@ -11,16 +11,11 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -46,9 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         registerReceiver(receiver, filter)
 
-        // App settings
-        AppHelper.init(applicationContext)
-
         enableSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (!isNotificationListenerEnabled(applicationContext)) {
                 openNotificationListenerSettings()
@@ -73,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 val prefEditor = AppHelper.Settings.edit()
 
                 prefEditor.putBoolean(getString(R.string.pref_key_enable_service), isChecked)
-                    .commit()
+                    .apply()
 
                 if (isChecked) {
                     showNotificationIcon()
@@ -83,10 +75,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        initNotificationList()
+        if (!AppHelper.isLaunched) {
+            // App settings
+            AppHelper.init(applicationContext)
 
-        // Update APNS authentication token
-        ViewHelper.updateAPNSAuthToken(this)
+            initNotificationList()
+
+            // Update APNS authentication token
+            ViewHelper.updateAPNSAuthToken(this)
+
+            AppHelper.isLaunched = true
+        }
 
         enableSwitch.isChecked = AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)
     }
@@ -98,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.action_bar, menu)
+        menuInflater.inflate(R.menu.action_bar_main, menu)
 
         return true
     }

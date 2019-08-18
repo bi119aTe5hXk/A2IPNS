@@ -25,44 +25,50 @@ class NotificationListener : NotificationListenerService() {
                 sbn?.packageName ?: "<Unknown>"
             )
 
-            val authToken = AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
+            if (AppHelper.Settings.getStringSet(
+                    getString(R.string.pref_key_selected_apps),
+                    null
+                )?.contains(item.source) == true
+            ) {
+                val authToken = AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
 
-            if (authToken != null) {
-                val authTokenPackage = JSONObject(authToken)
-                val jwt = CryptoHelper.getAPNSBearerToken(authTokenPackage)
-                val headers = HashMap<String, String>()
+                if (authToken != null) {
+                    val authTokenPackage = JSONObject(authToken)
+                    val jwt = CryptoHelper.getAPNSBearerToken(authTokenPackage)
+                    val headers = HashMap<String, String>()
 
-                headers["Authorization"] = "bearer $jwt"
-                headers["apns-push-type"] = "alert"
-                headers["apns-topic"] = authTokenPackage.getString("id")
+                    headers["Authorization"] = "bearer $jwt"
+                    headers["apns-push-type"] = "alert"
+                    headers["apns-topic"] = authTokenPackage.getString("id")
 
-                if (jwt != null) {
-                    val jsonObject = generateAppleJSONObject(item)
-                    val request = JsonObjectRequestWithCustomHeaders(Request.Method.POST,
-                        AppHelper.APNSServerURL + "/3/device/${AppHelper.Settings.getString(
-                            getString(R.string.pref_key_device_token),
-                            ""
-                        )}",
-                        headers,
-                        jsonObject,
-                        Response.Listener { response ->
-                        },
-                        Response.ErrorListener { error ->
-                        })
+                    if (jwt != null) {
+                        val jsonObject = generateAppleJSONObject(item)
+                        val request = JsonObjectRequestWithCustomHeaders(Request.Method.POST,
+                            AppHelper.APNSServerURL + "/3/device/${AppHelper.Settings.getString(
+                                getString(R.string.pref_key_device_token),
+                                ""
+                            )}",
+                            headers,
+                            jsonObject,
+                            Response.Listener { response ->
+                            },
+                            Response.ErrorListener { error ->
+                            })
 
-                    if (!ExternalData.MockDebugMode) {
-                        AppHelper.HttpRequestQueue.add(request)
+                        if (!ExternalData.MockDebugMode) {
+                            AppHelper.HttpRequestQueue.add(request)
+                        }
+
+                        Log.i(getString(R.string.app_name), "Message from ${item.source}")
                     }
-
-                    Log.i(getString(R.string.app_name), "Message from ${item.source}")
                 }
+
+                val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
+
+                intent.putExtra("notification_item", item)
+
+                sendBroadcast(intent)
             }
-
-            val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
-
-            intent.putExtra("notification_item", item)
-
-            sendBroadcast(intent)
         }
 
         super.onNotificationPosted(sbn)

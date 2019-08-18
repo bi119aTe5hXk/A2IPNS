@@ -6,6 +6,7 @@
     <string name="button_clear_history_text">Clear History</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
 
     <string name="notification_channel_name">Android to Push Notification Service</string>
     <string name="notification_channel_description">Android to Push Notification Service</string>
@@ -23,6 +24,7 @@
 
     <string name="alert_button_yes">Yes</string>
     <string name="alert_button_no">No</string>
+    <string name="alert_button_cancel">Cancel</string>
 
     <string name="alert_no_device_token_title">No Device Token Set</string>
     <string name="alert_no_device_token_message">The paired device token is not set.\n\nDo you want to pair your iOS
@@ -34,4 +36,6 @@
     <string name="pref_category_title_general">General</string>
     <string name="pref_title_pair_device">Pair device via QR code</string>
     <string name="pref_title_sync_auth_token">Synchronize APS authentication token</string>
+    <string name="pref_title_select_apps">Select apps to be monitored</string>
+    <string name="pref_title_action_bar_select_apps">Select Apps</string>
 </resources>

@@ -47,7 +47,7 @@ class QRCodeActivity : AppCompatActivity() {
                     val prefEditor = AppHelper.Settings.edit()
 
                     prefEditor.putString(getString(R.string.pref_key_device_token), token)
-                        .commit()
+                        .apply()
 
                     Toast.makeText(
                         this,

@@ -5,11 +5,14 @@
             app:title="@string/pref_category_title_general">
 
         <Preference
+                android:title="@string/pref_title_sync_auth_token"
+                android:key="@string/pref_ns_key_sync_auth_token"/>
+        <Preference
                 android:title="@string/pref_title_pair_device"
                 android:key="@string/pref_ns_key_pair_device"/>
         <Preference
-                android:title="@string/pref_title_sync_auth_token"
-                android:key="@string/pref_ns_key_sync_auth_token"/>
+                android:title="@string/pref_title_select_apps"
+                android:key="@string/pref_ns_key_select_apps"/>
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>
