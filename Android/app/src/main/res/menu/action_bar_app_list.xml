@@ -4,4 +4,10 @@
           android:title="@string/action_search"
           app:showAsAction="collapseActionView|ifRoom"
           app:actionViewClass="android.widget.SearchView"/>
+    <item android:id="@+id/selectAll"
+          android:title="@string/action_select_all"
+          app:showAsAction="collapseActionView|ifRoom"/>
+    <item android:id="@+id/clearAll"
+          android:title="@string/action_clear_all"
+          app:showAsAction="collapseActionView|ifRoom"/>
 </menu>

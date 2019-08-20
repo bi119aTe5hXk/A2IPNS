@@ -79,13 +79,13 @@ class MainActivity : AppCompatActivity() {
             // App settings
             AppHelper.init(applicationContext)
 
-            initNotificationList()
-
             // Update APNS authentication token
             ViewHelper.updateAPNSAuthToken(this)
 
             AppHelper.isLaunched = true
         }
+
+        initNotificationList()
 
         enableSwitch.isChecked = AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)
     }

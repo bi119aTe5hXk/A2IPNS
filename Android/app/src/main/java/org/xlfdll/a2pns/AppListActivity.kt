@@ -54,7 +54,7 @@ class AppListActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.action_bar_app_list, menu)
 
-        val menuItem = menu?.findItem(R.id.search)
+        var menuItem = menu?.findItem(R.id.search)
         val searchView = menuItem?.actionView as SearchView
 
         menuItem.setOnMenuItemClickListener {
@@ -86,6 +86,29 @@ class AppListActivity : AppCompatActivity() {
                 return true
             }
         })
+
+        menuItem = menu?.findItem(R.id.selectAll)
+        menuItem?.setOnMenuItemClickListener {
+            for (info in installedPackages) {
+                if (!selectedApps.contains(info.packageName)) {
+                    selectedApps.add(info.packageName)
+                }
+            }
+
+            appListRecyclerView.adapter?.notifyDataSetChanged()
+
+            true
+        }
+
+        menuItem = menu?.findItem(R.id.clearAll)
+        menuItem?.isEnabled = selectedApps.size > 0
+        menuItem?.setOnMenuItemClickListener {
+            selectedApps.clear()
+
+            appListRecyclerView.adapter?.notifyDataSetChanged()
+
+            true
+        }
 
         return super.onCreateOptionsMenu(menu)
     }
