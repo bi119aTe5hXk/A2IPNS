@@ -27,7 +27,7 @@ internal object AppHelper {
             if (Settings.getStringSet(context.getString(R.string.pref_key_selected_apps), null) == null) {
                 Settings.edit()
                     .putStringSet(context.getString(R.string.pref_key_selected_apps), HashSet<String>())
-                    .apply()
+                    .commit()
             }
         }
 

@@ -1,18 +1,10 @@
 package net.bi119ate5hxk.a2ipns
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import kotlinx.android.synthetic.main.activity_main.*
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +13,9 @@ class SettingsActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.actionToolbar))
 
-        this.title = getString(R.string.action_settings)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        this.title = getString(R.string.action_settings)
 
         supportFragmentManager
             .beginTransaction()

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_app_list.*
 
 class AppListActivity : AppCompatActivity() {
     private lateinit var installedPackages: MutableList<PackageInfo>
+    private lateinit var selectedApps: MutableSet<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +23,12 @@ class AppListActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.actionToolbar))
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         this.title = getString(R.string.pref_title_action_bar_select_apps)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        selectedApps =
+            HashSet<String>(AppHelper.Settings.getStringSet(getString(R.string.pref_key_selected_apps), null))
 
         installedPackages = packageManager.getInstalledPackages(0)
         installedPackages.sortWith(compareBy { info ->
@@ -37,6 +41,14 @@ class AppListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@AppListActivity)
             adapter = AppListAdapter(installedPackages)
         }
+    }
+
+    override fun onDestroy() {
+        AppHelper.Settings.edit()
+            .putStringSet(getString(R.string.pref_key_selected_apps), selectedApps)
+            .commit()
+
+        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,11 +65,13 @@ class AppListActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
+                    val trimmedNewText = newText.trim()
+
                     val packageInfo = installedPackages.singleOrNull { info ->
                         info.applicationInfo.loadLabel(packageManager).contains(
-                            newText,
+                            trimmedNewText,
                             true
-                        ) || info.packageName.contains(newText, true)
+                        ) || info.packageName.contains(trimmedNewText, true)
                     }
 
                     if (packageInfo != null) {
@@ -76,9 +90,9 @@ class AppListActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    class AppListAdapter(private val appList: List<PackageInfo>) :
+    inner class AppListAdapter(private val appList: List<PackageInfo>) :
         RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() {
-        class AppListViewHolder(private val view: ConstraintLayout) : RecyclerView.ViewHolder(view)
+        inner class AppListViewHolder(private val view: ConstraintLayout) : RecyclerView.ViewHolder(view)
 
         private lateinit var context: Context
 
@@ -106,23 +120,15 @@ class AppListActivity : AppCompatActivity() {
                 appList[position].packageName
 
             val appSelectedCheckBox = holder.itemView.findViewById<CheckBox>(R.id.appSelectedCheckBox)
-            val selectedAppList =
-                AppHelper.Settings.getStringSet(context.getString(R.string.pref_key_selected_apps), null)
 
-            if (selectedAppList != null) {
-                appSelectedCheckBox.isChecked = selectedAppList.contains(appList[position].packageName)
-                appSelectedCheckBox.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked && !selectedAppList.contains(appList[position].packageName)) {
-                        selectedAppList.add(appList[position].packageName)
-                    } else if (!isChecked) {
-                        selectedAppList.remove(appList[position].packageName)
-                    }
-
-                    AppHelper.Settings.edit()
-                        .putStringSet(context.getString(R.string.pref_key_selected_apps), selectedAppList)
-                        .apply()
+            appSelectedCheckBox.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked && !selectedApps.contains(appList[position].packageName)) {
+                    selectedApps.add(appList[position].packageName)
+                } else if (!isChecked) {
+                    selectedApps.remove(appList[position].packageName)
                 }
             }
+            appSelectedCheckBox.isChecked = selectedApps.contains(appList[position].packageName)
         }
     }
 }

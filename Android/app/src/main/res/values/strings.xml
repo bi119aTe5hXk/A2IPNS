@@ -12,7 +12,7 @@
     <string name="notification_channel_description">Android to Push Notification Service</string>
     <string name="notification_running_text">The service is running</string>
 
-    <string name="toast_device_token_pair_success_message">iOS device paired successfully</string>
+    <string name="toast_device_token_pair_success_message">Device paired successfully</string>
     <string name="toast_device_token_camera_init_error">Camera initialization error:</string>
 
     <string name="toast_token_updated_message">APS authentication token was updated successfully</string>
@@ -27,7 +27,7 @@
     <string name="alert_button_cancel">Cancel</string>
 
     <string name="alert_no_device_token_title">No Device Token Set</string>
-    <string name="alert_no_device_token_message">The paired device token is not set.\n\nDo you want to pair your iOS
+    <string name="alert_no_device_token_message">The paired device token is not set.\n\nDo you want to pair your
         device now?
     </string>
     <string name="title_activity_settings">Settings</string>

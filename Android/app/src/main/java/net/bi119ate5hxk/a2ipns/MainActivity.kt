@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 val prefEditor = AppHelper.Settings.edit()
 
                 prefEditor.putBoolean(getString(R.string.pref_key_enable_service), isChecked)
-                    .apply()
+                    .commit()
 
                 if (isChecked) {
                     showNotificationIcon()

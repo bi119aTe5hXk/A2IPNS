@@ -28,7 +28,7 @@ internal object ViewHelper {
                             context.getString(R.string.pref_key_auth_token_update_date),
                             response.getString("time")
                         )
-                        .apply()
+                        .commit()
 
                     Toast.makeText(context, context.getString(R.string.toast_token_updated_message), Toast.LENGTH_SHORT)
                         .show()
