@@ -1,4 +1,4 @@
-package net.bi119ate5hxk.a2ipns
+package org.xlfdll.a2pns
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             openNotificationListenerSettings()
         }
 
-        val filter = IntentFilter("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
+        val filter = IntentFilter("org.xlfdll.a2pns.NOTIFICATION_SERVICE")
 
         registerReceiver(receiver, filter)
 

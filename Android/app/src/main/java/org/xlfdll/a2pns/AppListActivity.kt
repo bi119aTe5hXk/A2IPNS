@@ -1,4 +1,4 @@
-package net.bi119ate5hxk.a2ipns
+package org.xlfdll.a2pns
 
 import android.content.Context
 import android.content.pm.PackageInfo

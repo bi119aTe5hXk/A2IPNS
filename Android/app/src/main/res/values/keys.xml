@@ -9,4 +9,6 @@
     <string name="pref_ns_key_sync_auth_token">SyncAuthToken</string>
     <string name="pref_ns_key_pair_device">PairDevice</string>
     <string name="pref_ns_key_select_apps">SelectApps</string>
+
+    <string name="id_qr_code_ios">A2IPNS</string>
 </resources>

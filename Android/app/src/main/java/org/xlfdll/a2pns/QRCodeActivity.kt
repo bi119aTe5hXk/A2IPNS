@@ -1,4 +1,4 @@
-package net.bi119ate5hxk.a2ipns
+package org.xlfdll.a2pns
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -90,12 +90,13 @@ class QRCodeActivity : AppCompatActivity() {
         try {
             val jsonObject = JSONObject(json)
 
-            when (jsonObject.getString("id") == getString(R.string.app_name)) {
+            when (jsonObject.getString("id") == getString(R.string.id_qr_code_ios)) {
                 true -> return jsonObject.getString("token")
-                false -> return null
             }
         } catch (_: JSONException) {
             return null
         }
+
+        return null
     }
 }

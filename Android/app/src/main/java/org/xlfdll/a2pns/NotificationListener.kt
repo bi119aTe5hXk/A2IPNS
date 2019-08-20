@@ -1,4 +1,4 @@
-package net.bi119ate5hxk.a2ipns
+package org.xlfdll.a2pns
 
 import android.content.Intent
 import android.service.notification.NotificationListenerService
@@ -56,7 +56,7 @@ class NotificationListener : NotificationListenerService() {
                     }
                 }
 
-                val intent = Intent("net.bi119ate5hxk.a2ipns.NOTIFICATION_SERVICE")
+                val intent = Intent("org.xlfdll.a2pns.NOTIFICATION_SERVICE")
 
                 intent.putExtra("notification_item", item)
 

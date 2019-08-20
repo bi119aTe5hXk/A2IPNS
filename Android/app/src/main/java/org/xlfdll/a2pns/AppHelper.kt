@@ -1,4 +1,4 @@
-package net.bi119ate5hxk.a2ipns
+package org.xlfdll.a2pns
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,7 +8,7 @@ import com.android.volley.toolbox.Volley
 import org.xlfdll.android.network.OkHttpStack
 
 internal object AppHelper {
-    const val NOTIFICATION_CHANNEL_ID = "net.bi119ate5hxk.a2ipns.notification"
+    const val NOTIFICATION_CHANNEL_ID = "org.xlfdll.a2pns.notification"
     const val NOTIFICATION_ID = 1
 
     // Development server: api.sandbox.push.apple.com:443
