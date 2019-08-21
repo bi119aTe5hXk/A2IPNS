@@ -9,8 +9,17 @@ import com.android.volley.toolbox.JsonObjectRequest
 
 internal object ViewHelper {
     fun updateAPNSAuthToken(context: Context) {
+        val url = AppHelper.Settings.getString(
+            context.getString(R.string.pref_key_custom_auth_token_url),
+            ExternalData.APNSAuthTokenURL
+        )
+        val secret = AppHelper.Settings.getString(
+            context.getString(R.string.pref_key_custom_auth_token_secret),
+            ExternalData.DecryptionSecret
+        )
+
         val request = JsonObjectRequest(
-            Request.Method.GET, ExternalData.APNSAuthTokenURL, null,
+            Request.Method.GET, url, null,
             Response.Listener { response ->
                 if (response.getString("time") != AppHelper.Settings.getString(
                         context.getString(R.string.pref_key_auth_token_update_date),
@@ -19,7 +28,12 @@ internal object ViewHelper {
                 ) {
                     val certData = response.getString("cert").split(":")
                     val token =
-                        CryptoHelper.decrypt(certData[0], certData[1], certData[2], ExternalData.DecryptionSecret)
+                        CryptoHelper.decrypt(
+                            certData[0],
+                            certData[1],
+                            certData[2],
+                            ExternalData.DecryptionSecret
+                        )
 
                     val prefEditor = AppHelper.Settings.edit()
 
@@ -30,7 +44,11 @@ internal object ViewHelper {
                         )
                         .commit()
 
-                    Toast.makeText(context, context.getString(R.string.toast_token_updated_message), Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.toast_token_updated_message),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 } else {
                     Toast.makeText(

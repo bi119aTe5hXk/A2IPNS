@@ -5,6 +5,8 @@
     <string name="pref_key_auth_token_update_date">AuthTokenUpdateDate</string>
     <string name="pref_key_device_token">DeviceToken</string>
     <string name="pref_key_selected_apps">SelectedApps</string>
+    <string name="pref_key_custom_auth_token_url">CustomAuthTokenURL</string>
+    <string name="pref_key_custom_auth_token_secret">CustomAuthTokenSecret</string>
 
     <string name="pref_ns_key_sync_auth_token">SyncAuthToken</string>
     <string name="pref_ns_key_pair_device">PairDevice</string>

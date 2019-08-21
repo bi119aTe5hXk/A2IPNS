@@ -1,7 +1,9 @@
 package org.xlfdll.a2pns
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -23,11 +25,43 @@ class SettingsActivity : AppCompatActivity() {
             .commit()
     }
 
-    class SettingsFragment : PreferenceFragmentCompat() {
+    class SettingsFragment : PreferenceFragmentCompat(),
+        SharedPreferences.OnSharedPreferenceChangeListener {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
 
             initializePreferenceButtons()
+        }
+
+        override fun onSharedPreferenceChanged(
+            sharedPreferences: SharedPreferences?,
+            key: String?
+        ) {
+            val customAuthTokenURLKey = getString(R.string.pref_key_custom_auth_token_url)
+            val customAuthTokenSecretKey = getString(R.string.pref_key_custom_auth_token_secret)
+
+            when (key) {
+                customAuthTokenURLKey -> {
+                    if (sharedPreferences?.getString(key, null) == "") {
+                        sharedPreferences.edit()
+                            .putString(key, null)
+                            .putString(customAuthTokenSecretKey, null)
+                            .commit()
+                    }
+                }
+            }
+        }
+
+        override fun onResume() {
+            preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+
+            super.onResume()
+        }
+
+        override fun onPause() {
+            preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+
+            super.onPause()
         }
 
         private fun initializePreferenceButtons() {

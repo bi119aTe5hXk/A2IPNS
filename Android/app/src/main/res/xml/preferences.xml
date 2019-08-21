@@ -1,18 +1,31 @@
-<androidx.preference.PreferenceScreen
-        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-            app:title="@string/pref_category_title_general">
+    <PreferenceCategory app:title="@string/pref_category_title_general">
 
         <Preference
-                android:title="@string/pref_title_sync_auth_token"
-                android:key="@string/pref_ns_key_sync_auth_token"/>
+                android:key="@string/pref_ns_key_sync_auth_token"
+                android:title="@string/pref_title_sync_auth_token" />
         <Preference
-                android:title="@string/pref_title_pair_device"
-                android:key="@string/pref_ns_key_pair_device"/>
+                android:key="@string/pref_ns_key_pair_device"
+                android:title="@string/pref_title_pair_device" />
         <Preference
-                android:title="@string/pref_title_select_apps"
-                android:key="@string/pref_ns_key_select_apps"/>
+                android:key="@string/pref_ns_key_select_apps"
+                android:title="@string/pref_title_select_apps" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/pref_category_title_custom">
+        <EditTextPreference
+                android:inputType="textUri"
+                android:key="@string/pref_key_custom_auth_token_url"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="@string/pref_title_set_custom_auth_token_url" />
+        <EditTextPreference
+                android:inputType="textVisiblePassword"
+                android:key="@string/pref_key_custom_auth_token_secret"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="@string/pref_title_set_custom_auth_token_secret" />
     </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>

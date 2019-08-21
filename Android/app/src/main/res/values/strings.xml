@@ -39,5 +39,10 @@
     <string name="pref_title_pair_device">Pair device via QR code</string>
     <string name="pref_title_sync_auth_token">Synchronize APS authentication token</string>
     <string name="pref_title_select_apps">Select apps to be monitored</string>
+
+    <string name="pref_category_title_custom">Custom</string>
+    <string name="pref_title_set_custom_auth_token_url">Set custom authentication token server URL</string>
+    <string name="pref_title_set_custom_auth_token_secret">Set custom token decryption secret</string>
+
     <string name="pref_title_action_bar_select_apps">Select Apps</string>
 </resources>
