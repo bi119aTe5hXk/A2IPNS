@@ -27,8 +27,14 @@ class AppListActivity : AppCompatActivity() {
 
         this.title = getString(R.string.pref_title_action_bar_select_apps)
 
-        selectedApps =
-            HashSet<String>(AppHelper.Settings.getStringSet(getString(R.string.pref_key_selected_apps), null))
+        selectedApps = HashSet<String>()
+
+        val selectAppSet =
+            AppHelper.Settings.getStringSet(getString(R.string.pref_key_selected_apps), null)
+
+        if (selectAppSet != null) {
+            selectedApps.addAll(selectAppSet)
+        }
 
         installedPackages = packageManager.getInstalledPackages(0)
         installedPackages.sortWith(compareBy { info ->
@@ -67,8 +73,8 @@ class AppListActivity : AppCompatActivity() {
                 if (newText != null) {
                     val trimmedNewText = newText.trim()
 
-                    val packageInfo = installedPackages.singleOrNull { info ->
-                        info.applicationInfo.loadLabel(packageManager).contains(
+                    val packageInfo = installedPackages.find { info ->
+                        info.applicationInfo.loadLabel(packageManager).toString().contains(
                             trimmedNewText,
                             true
                         ) || info.packageName.contains(trimmedNewText, true)
@@ -115,7 +121,8 @@ class AppListActivity : AppCompatActivity() {
 
     inner class AppListAdapter(private val appList: List<PackageInfo>) :
         RecyclerView.Adapter<AppListAdapter.AppListViewHolder>() {
-        inner class AppListViewHolder(private val view: ConstraintLayout) : RecyclerView.ViewHolder(view)
+        inner class AppListViewHolder(private val view: ConstraintLayout) :
+            RecyclerView.ViewHolder(view)
 
         private lateinit var context: Context
 
@@ -142,7 +149,8 @@ class AppListActivity : AppCompatActivity() {
             holder.itemView.findViewById<TextView>(R.id.appPackageNameTextView).text =
                 appList[position].packageName
 
-            val appSelectedCheckBox = holder.itemView.findViewById<CheckBox>(R.id.appSelectedCheckBox)
+            val appSelectedCheckBox =
+                holder.itemView.findViewById<CheckBox>(R.id.appSelectedCheckBox)
 
             appSelectedCheckBox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked && !selectedApps.contains(appList[position].packageName)) {
