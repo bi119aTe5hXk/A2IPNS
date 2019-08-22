@@ -3,8 +3,14 @@ package org.xlfdll.a2pns
 import android.os.Parcel
 import android.os.Parcelable
 
-class NotificationItem(val title: String, val text: String, val source: String) : Parcelable {
+class NotificationItem(
+    val title: String,
+    val text: String,
+    val source: String,
+    val packageName: String
+) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: ""
@@ -18,6 +24,7 @@ class NotificationItem(val title: String, val text: String, val source: String) 
         dest?.writeString(this.title)
         dest?.writeString(this.text)
         dest?.writeString(this.source)
+        dest?.writeString(this.packageName)
     }
 
     companion object CREATOR : Parcelable.Creator<NotificationItem> {

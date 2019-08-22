@@ -12,18 +12,28 @@ import org.xlfdll.android.network.JsonObjectRequestWithCustomHeaders
 class NotificationListener : NotificationListenerService() {
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         if (AppHelper.Settings.getBoolean(getString(R.string.pref_key_enable_service), false)) {
+            var source = sbn?.packageName
+
+            if (source != null) {
+                source = packageManager.getPackageInfo(source, 0).applicationInfo.loadLabel(
+                    packageManager
+                ).toString()
+            }
+
             val item = NotificationItem(
                 sbn?.notification?.extras?.getString("android.title") ?: "",
                 sbn?.notification?.extras?.getString("android.text") ?: "",
-                sbn?.packageName ?: "<Unknown>"
+                source ?: "<Unknown>",
+                sbn?.packageName ?: ""
             )
 
             if (AppHelper.Settings.getStringSet(
                     getString(R.string.pref_key_selected_apps),
                     null
-                )?.contains(item.source) == true
+                )?.contains(item.packageName) == true
             ) {
-                val authToken = AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
+                val authToken =
+                    AppHelper.Settings.getString(getString(R.string.pref_key_auth_token), null)
 
                 if (authToken != null) {
                     val authTokenPackage = JSONObject(authToken)
