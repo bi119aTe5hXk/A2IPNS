@@ -8,6 +8,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 
 internal object ViewHelper {
+    val NotificationItemList = ArrayList<NotificationItem>()
+
     fun updateAPNSAuthToken(context: Context) {
         val url = AppHelper.Settings.getString(
             context.getString(R.string.pref_key_custom_auth_token_url),

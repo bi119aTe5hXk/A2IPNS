@@ -19,8 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    val notificationItemList = ArrayList<NotificationItem>()
-    val notificationItemListAdapter = NotificationListAdapter(notificationItemList)
     private val receiver = NotificationServiceReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,8 +103,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clearHistoryAction(view: View) {
-        notificationItemList.clear()
-        notificationItemListAdapter.notifyDataSetChanged()
+        ViewHelper.NotificationItemList.clear()
+
+        notificationRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     private fun isNotificationListenerEnabled(context: Context): Boolean {
@@ -148,7 +147,7 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
 
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = notificationItemListAdapter
+            adapter = NotificationListAdapter(ViewHelper.NotificationItemList)
         }
     }
 
@@ -199,8 +198,9 @@ class MainActivity : AppCompatActivity() {
             val item = intent?.getParcelableExtra<NotificationItem>("notification_item")
 
             if (item != null) {
-                notificationItemList.add(0, item)
-                notificationItemListAdapter.notifyDataSetChanged()
+                ViewHelper.NotificationItemList.add(0, item)
+
+                notificationRecyclerView.adapter?.notifyDataSetChanged()
             }
         }
     }
