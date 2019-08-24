@@ -34,9 +34,9 @@ internal object ExternalData {
 
 ## How to Use
 
-1. Open A2IPNS app on your iOS device to enable receiving the push notification.
+1. Install A2IPNS app on your iOS device and enable notification permissions.
 
-2. Open A2IPNS app on your Android device, and grant notification permissions. Scan the QR code shown on your iOS device using your Android device to pair two devices.
+2. Install [A2PNS](https://github.com/xlfdll/A2PNS) app on your Android device, and grant notification permissions. Scan the QR code which shown on your iOS device, using your Android device to pair two devices.
 
 3. Enable the service on Android app.
 
