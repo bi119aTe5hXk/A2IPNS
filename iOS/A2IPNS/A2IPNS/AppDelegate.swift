@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UserDefaults.standard.register(defaults: ["pushtoken": ""])
+        UserDefaults.standard.register(defaults: ["notification_history": []])
+        self.checkNotificaionPromission()
+        return true
+    }
+    func checkNotificaionPromission() {
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .badge, .sound])
@@ -30,12 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else {
                 print("APNS NOT ALLOWED.")
+                let alert = UIAlertController(title: "Notification disabled", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                //                self.window.present(alert, animated: true, completion: nil)
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         }
-        UserDefaults.standard.register(defaults: ["pushtoken": ""])
-        UserDefaults.standard.register(defaults: ["notification_history": []])
-        
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -54,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        self.checkNotificaionPromission()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -68,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
         print("tokenis:" + token)
         UserDefaults.standard.set(token, forKey: "pushtoken")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pushtoken"), object: nil, userInfo: ["token":token])
     }
 
     func application(_ application: UIApplication,
