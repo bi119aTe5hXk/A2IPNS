@@ -18,9 +18,6 @@ class QRViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(getToken), name: NSNotification.Name(rawValue: "pushtoken"), object: nil)
-        
-
         // Do any additional setup after loading the view.
         if token != nil {
             
@@ -33,18 +30,6 @@ class QRViewController: UIViewController {
         }else{
             self.tokenLabel.text = "Please enable Notification in Settings application."
         }
-        
-    }
-    @objc func getToken(notification:Notification){
-        let dic = notification.userInfo
-        let token = dic!["token"] as! String
-        
-        self.tokenLabel.text = token
-        let qrDict:[String:String] = ["id":"A2IPNS","token":token];
-        let data = try? JSONSerialization.data(withJSONObject: qrDict, options: [])
-        print("qrstr:" + String(data: data!, encoding: String.Encoding.utf8)!)
-        let qrimage = generateQRCode(from: String(data: data!, encoding: String.Encoding.utf8)!)
-        self.imgQRCode.image = qrimage
     }
     
     func generateQRCode(from string: String) -> UIImage? {
@@ -58,7 +43,6 @@ class QRViewController: UIViewController {
                 return UIImage(ciImage: output)
             }
         }
-        
         return nil
     }
     @IBAction func showInfoBTNPressed(_ sender: Any) {
