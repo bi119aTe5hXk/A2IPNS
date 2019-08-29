@@ -13,24 +13,7 @@ An app series to enable Android notification redirection to iOS platforms
 
 4. Import .mobileprovision file into Xcode and build.
 
-5. Open the Android project in Android Studio.
-
-6. Create an ExternalData.kt file with the following code structures, and add your server URL and decryption secret:
-
-```
-package net.bi119ate5hxk.a2ipns
-
-internal object ExternalData {
-    // true - Create Apple Push Notification JSON payload but do not send
-    // false - Production Mode. Send actual JSON payload to Apple Push Notification Service
-    const val MockDebugMode = true
-    const val APNSAuthTokenURL = <Your Server URL: String>
-    const val DecryptionSecret = <Your Decryption Secret: String>
-}
-```
-
-7. Build the Android project and test.
-
+Refer to [here](https://github.com/xlfdll/A2PNS/blob/master/README.md) for Android app build instructions
 
 ## How to Use
 
