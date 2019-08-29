@@ -1,6 +1,10 @@
 # Android to iOS Push Notification Services
 An app series to enable Android notification redirection to iOS platforms
 
+<a href="https://play.google.com/store/apps/details?id=org.xlfdll.a2pns">
+  <img src="https://github.com/xlfdll/xlfdll.github.io/raw/master/images/google-play-badge.png" alt="Get A2PNS (Android) on Google Play Store" height="64">
+</a>
+
 ## How to Build
 
 1. Add a new Explicit App ID in your Apple Developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns).
