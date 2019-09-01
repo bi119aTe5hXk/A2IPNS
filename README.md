@@ -1,6 +1,10 @@
 # Android to iOS Push Notification Services
 An app series to enable Android notification redirection to iOS platforms
 
+<a href="https://play.google.com/store/apps/details?id=org.xlfdll.a2pns">
+  <img src="https://github.com/xlfdll/xlfdll.github.io/raw/master/images/google-play-badge.png" alt="Get A2PNS (Android) on Google Play Store" height="64">
+</a>
+
 ## How to Build
 
 1. Add a new Explicit App ID in your Apple Developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns).
@@ -13,30 +17,13 @@ An app series to enable Android notification redirection to iOS platforms
 
 4. Import .mobileprovision file into Xcode and build.
 
-5. Open the Android project in Android Studio.
-
-6. Create an ExternalData.kt file with the following code structures, and add your server URL and decryption secret:
-
-```
-package net.bi119ate5hxk.a2ipns
-
-internal object ExternalData {
-    // true - Create Apple Push Notification JSON payload but do not send
-    // false - Production Mode. Send actual JSON payload to Apple Push Notification Service
-    const val MockDebugMode = true
-    const val APNSAuthTokenURL = <Your Server URL: String>
-    const val DecryptionSecret = <Your Decryption Secret: String>
-}
-```
-
-7. Build the Android project and test.
-
+Refer to [here](https://github.com/xlfdll/A2PNS/blob/master/README.md) for Android app build instructions
 
 ## How to Use
 
-1. Open A2IPNS app on your iOS device to enable receiving the push notification.
+1. Install A2IPNS app on your iOS device and enable notification permissions.
 
-2. Open A2IPNS app on your Android device, and grant notification permissions. Scan the QR code shown on your iOS device using your Android device to pair two devices.
+2. Install [A2PNS](https://github.com/xlfdll/A2PNS) app on your Android device, and grant notification permissions. Scan the QR code which shown on your iOS device, using your Android device to pair two devices.
 
 3. Enable the service on Android app.
 
