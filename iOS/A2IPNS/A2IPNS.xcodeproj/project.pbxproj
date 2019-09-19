@@ -17,7 +17,21 @@
 		86C98ED222FEBA5300F29DD8 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4728C9DF23142D0600DF8F7F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4728C9D023142D0600DF8F7F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		8640922022F6A831006DE85C /* A2IPNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A2IPNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8640922322F6A831006DE85C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8640922A22F6A831006DE85C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8640925722F6ADF2006DE85C /* UserNotifications.framework */,
+				4728C9D023142D0600DF8F7F /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,6 +109,7 @@
 				8640921C22F6A831006DE85C /* Sources */,
 				8640921D22F6A831006DE85C /* Frameworks */,
 				8640921E22F6A831006DE85C /* Resources */,
+				4728C9DF23142D0600DF8F7F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -311,12 +327,14 @@
 		8640924B22F6A834006DE85C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 201908241309;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +350,7 @@
 		8640924C22F6A834006DE85C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -339,6 +358,7 @@
 				CURRENT_PROJECT_VERSION = 201908241309;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

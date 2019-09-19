@@ -8,8 +8,12 @@
 
 import UIKit
 
-class HistoryViewController: UITableViewController {
+class HistoryViewController: UITableViewController,UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
+    var filteredList: [Any]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +24,60 @@ class HistoryViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.
         
+        self.searchBar.delegate = self
+        self.tableView.delegate = self
+        
         let refreshControl = UIRefreshControl.init()
         refreshControl.addTarget(self, action: #selector(self.onRefresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         
-        self.onRefresh()
+        self.resetToNormalList()
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.onRefresh()
+        self.resetToNormalList()
     }
     @objc func onRefresh() {
         self.refreshControl?.endRefreshing()
+        if (self.searchBar.text?.lengthOfBytes(using: .utf8))! > 0{
+            //refresh for keyword search
+        }else{
+            //refresh for normal list
+            self.resetToNormalList()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.lengthOfBytes(using: .utf8) > 0 {
+            self.searchFor(keyword: searchText)
+        }else{
+            self.resetToNormalList()
+        }
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchFor(keyword: searchBar.text!)
+    }
+    
+    func searchFor(keyword:String) {
+        print(keyword)
+//        filteredList = notifyarr!.filter { (item: String) -> Bool in
+//            // If dataItem matches the searchText, return true to include it
+//            item.range(of: keyword, options: .caseInsensitive, range: nil, locale: nil) != nil
+//        }
+//        filteredList = notifyarr?.filter({ (item) -> Bool in
+//
+//        })
+        
+    }
+    
+    func resetToNormalList() {
+        self.refreshControl?.endRefreshing()
         notifyarr = UserDefaults.standard.array(forKey: "notification_history")
-        //print(notifyarr as Any)
         notifyarr?.reverse()
+        filteredList = notifyarr
         self.tableView.reloadData()
     }
+    
     @IBAction func clearList(_ sender: Any) {
         notifyarr = []
         UserDefaults.standard.set([], forKey: "notification_history")
