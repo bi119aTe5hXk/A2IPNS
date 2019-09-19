@@ -57,6 +57,9 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchFor(keyword: searchBar.text!)
     }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     
     func searchFor(keyword:String) {
         //print(keyword)
