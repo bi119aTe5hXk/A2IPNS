@@ -59,15 +59,22 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
     }
     
     func searchFor(keyword:String) {
-        print(keyword)
-//        filteredList = notifyarr!.filter { (item: String) -> Bool in
-//            // If dataItem matches the searchText, return true to include it
-//            item.range(of: keyword, options: .caseInsensitive, range: nil, locale: nil) != nil
-//        }
-//        filteredList = notifyarr?.filter({ (item) -> Bool in
-//
-//        })
-        
+        //print(keyword)
+        if notifyarr!.count > 0 {
+            filteredList = notifyarr?.filter({ (item) -> Bool in
+                //print(item as! [Dictionary<String,Any>])
+                
+                let dicarr = item as! [Dictionary<String,Any>]
+                let dic = dicarr[0]
+                
+                let titlestr = dic["title"] as! String
+                let subtitlestr = dic["subtitle"] as! String
+                let bodystr = dic["body"] as! String
+                return titlestr.range(of: keyword, options: .caseInsensitive, range: nil, locale: nil) != nil || subtitlestr.range(of: keyword, options: .caseInsensitive, range: nil, locale: nil) != nil || bodystr.range(of: keyword, options: .caseInsensitive, range: nil, locale: nil) != nil
+                //return false
+            })
+            self.tableView.reloadData()
+        }
     }
     
     func resetToNormalList() {
@@ -75,13 +82,14 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
         notifyarr = UserDefaults.standard.array(forKey: "notification_history")
         notifyarr?.reverse()
         filteredList = notifyarr
+        //print(notifyarr)
         self.tableView.reloadData()
     }
     
     @IBAction func clearList(_ sender: Any) {
         notifyarr = []
         UserDefaults.standard.set([], forKey: "notification_history")
-        self.onRefresh()
+        self.resetToNormalList()
     }
     
     // MARK: - Table view data source
@@ -93,7 +101,7 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notifyarr!.count
+        return filteredList!.count
     }
 
     
@@ -102,14 +110,15 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
 
         // Configure the cell...
         let row = indexPath.row
-        let theArr = notifyarr![row] as! Array<Any>
+        let theArr = filteredList![row] as! Array<Any>
         let dicInRow:Dictionary = theArr[0] as! Dictionary<String, Any>
         cell.textLabel?.text = dicInRow["body"] as? String
         //cell.textLabel?.numberOfLines = 0
         cell.textLabel?.numberOfLines = cell.textLabel?.numberOfLines == 0 ? 1 : 0
         
-        let subtitletext = (dicInRow["subtitle"] as! String) + " - " + (dicInRow["title"] as! String)
+        let subtitletext = (dicInRow["time"] as! String) + "\n" + (dicInRow["subtitle"] as! String) + " - " + (dicInRow["title"] as! String)
         cell.detailTextLabel?.text = subtitletext
+        cell.detailTextLabel?.numberOfLines = 3
         
 
         return cell

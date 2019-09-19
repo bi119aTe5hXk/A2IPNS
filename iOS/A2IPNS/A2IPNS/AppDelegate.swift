@@ -102,7 +102,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let aps = userInfo["aps"] as? [AnyHashable: Any]
         let alert = aps?["alert"] as? Dictionary<String, Any>
         
-        notifyarr!.append([alert])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = Date()
+        let dateString = dateFormatter.string(from: date)
+        let dic2 = ["time":dateString]
+        let newDic = alert?.merging(dic2,uniquingKeysWith: { (_, last) in last })
+        
+        notifyarr!.append([newDic])
         UserDefaults.standard.set(notifyarr, forKey: "notification_history")
         
     }
