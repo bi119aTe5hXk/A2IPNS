@@ -12,6 +12,7 @@ import UserNotifications
 class InitSettingsViewController: UITableViewController {
 
     @IBOutlet weak var grantNotifyPermissionBTN: UIButton!
+    @IBOutlet weak var installA2PNSBTN: UIButton!
     @IBOutlet weak var showQRCodeBTN: UIButton!
     @IBOutlet weak var doneBTN: UIButton!
     
@@ -29,6 +30,7 @@ class InitSettingsViewController: UITableViewController {
         self.grantNotifyPermissionBTN.setTitle("Grant permissions", for: .normal)
         self.showQRCodeBTN.isEnabled = false
         self.showQRCodeBTN.setTitle("Show QR Code", for: .normal)
+        self.installA2PNSBTN.isEnabled = false
         self.doneBTN.isEnabled = false
     }
 
@@ -37,7 +39,13 @@ class InitSettingsViewController: UITableViewController {
         self.tryGrantNotificationPermission()
     }
 
-
+    @IBAction func installA2PNSBTNPressed(_ sender: Any) {
+        let url = URL(string:"https://play.google.com/store/apps/details?id=org.xlfdll.a2pns")
+        if( UIApplication.shared.canOpenURL(url!) ) {
+            UIApplication.shared.open(url!)
+        }
+    }
+    
 
     @IBAction func doneBTNPressed(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "not_first_time")
@@ -59,8 +67,9 @@ class InitSettingsViewController: UITableViewController {
                     let token = UserDefaults.standard.string(forKey: "pushtoken")
                     if token != nil {
                         self.grantNotifyPermissionBTN.isEnabled = false
-                        self.grantNotifyPermissionBTN.setTitle("Permission granted", for: .normal)
+                        self.grantNotifyPermissionBTN.setTitle("✅ Permission granted", for: .normal)
                         self.showQRCodeBTN.isEnabled = true
+                        self.installA2PNSBTN.isEnabled = true
                         self.doneBTN.isEnabled = true
                     }else{
                         print("Error: Somehow permission is granted but token is nil. Try again?")
