@@ -15,6 +15,8 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
     var notifyarr = UserDefaults.standard.array(forKey: "notification_history")
     var filteredList: [Any]!
     
+    let notFirstTimeBoot = UserDefaults.standard.bool(forKey: "not_first_time")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +33,16 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
         refreshControl.addTarget(self, action: #selector(self.onRefresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         
-        self.resetToNormalList()
-        
+        if !notFirstTimeBoot {
+            //boot at first time
+            var initView = self.storyboard?.instantiateViewController(withIdentifier: "InitSettingsNavViewController")
+            if #available(iOS 13.0, *) {
+                initView = self.storyboard?.instantiateViewController(identifier: "InitSettingsNavViewController")
+            }
+            self.present(initView!, animated: true, completion: nil)
+        }else{
+            self.resetToNormalList()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         self.resetToNormalList()

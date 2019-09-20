@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		862BF0242334BDCA00B0B91A /* InitSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */; };
+		862BF0262334BEA000B0B91A /* InitSettingsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */; };
 		8640922422F6A831006DE85C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640922322F6A831006DE85C /* AppDelegate.swift */; };
 		8640922B22F6A831006DE85C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8640922922F6A831006DE85C /* Main.storyboard */; };
 		8640922D22F6A834006DE85C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8640922C22F6A834006DE85C /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		4728C9D023142D0600DF8F7F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingsViewController.swift; sourceTree = "<group>"; };
+		862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingsNavViewController.swift; sourceTree = "<group>"; };
 		8640922022F6A831006DE85C /* A2IPNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A2IPNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8640922322F6A831006DE85C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8640922A22F6A831006DE85C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			children = (
 				8640925522F6AC94006DE85C /* A2IPNS.entitlements */,
 				8640922322F6A831006DE85C /* AppDelegate.swift */,
+				862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */,
+				862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */,
 				8640925922F6BA3B006DE85C /* HistoryViewController.swift */,
 				86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */,
 				8640925322F6A8AB006DE85C /* QRViewController.swift */,
@@ -180,9 +186,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8640925A22F6BA3B006DE85C /* HistoryViewController.swift in Sources */,
+				862BF0262334BEA000B0B91A /* InitSettingsNavViewController.swift in Sources */,
 				86C98ED222FEBA5300F29DD8 /* MoreViewController.swift in Sources */,
 				8640922422F6A831006DE85C /* AppDelegate.swift in Sources */,
 				8640925422F6A8AB006DE85C /* QRViewController.swift in Sources */,
+				862BF0242334BDCA00B0B91A /* InitSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +338,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 201908241309;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
@@ -353,7 +362,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 201908241309;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
@@ -365,7 +374,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.bi119aTe5hXk.A2IPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = A2IPNSAppStore;
+				PROVISIONING_PROFILE_SPECIFIER = A2IPNSDEV;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

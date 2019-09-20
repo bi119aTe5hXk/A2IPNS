@@ -14,7 +14,7 @@ class QRViewController: UIViewController {
     @IBOutlet weak var imgQRCode: UIImageView!
     @IBOutlet weak var tokenLabel:UILabel!
     var qrcodeImage: CIImage!
-    let token = UserDefaults.standard.string(forKey: "pushtoken");
+    let token = UserDefaults.standard.string(forKey: "pushtoken")
     
     override func viewDidLoad() {
         super.viewDidLoad()

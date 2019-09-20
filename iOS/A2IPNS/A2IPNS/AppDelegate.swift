@@ -20,32 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UserDefaults.standard.register(defaults: ["pushtoken": ""])
         UserDefaults.standard.register(defaults: ["notification_history": []])
+        UserDefaults.standard.register(defaults: ["not_first_time" : false])
         
         
-        let center = UNUserNotificationCenter.current()
-        // Request permission to display alerts and play sounds.
-        center.requestAuthorization(options: [.alert, .badge, .sound])
-        { (granted, error) in
-            // Enable or disable features based on authorization.
-            if granted {
-                print("APNS Allowed")
-                DispatchQueue.main.async {
-                    self.tryRegisterAPNS()
-                }
-            } else {
-                print("APNS NOT ALLOWED.")
-                let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                //                self.window.present(alert, animated: true, completion: nil)
-                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-            }
-        }
+//        let center = UNUserNotificationCenter.current()
+//        // Request permission to display alerts and play sounds.
+//        center.requestAuthorization(options: [.alert, .badge, .sound])
+//        { (granted, error) in
+//            // Enable or disable features based on authorization.
+//            if granted {
+//                print("APNS Allowed")
+//                DispatchQueue.main.async {
+//                    self.tryRegisterAPNS()
+//                }
+//            } else {
+//                print("APNS NOT ALLOWED.")
+//                let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                //                self.window.present(alert, animated: true, completion: nil)
+//                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+//            }
+//        }
+        
         return true
     }
-    func tryRegisterAPNS() {
-        UIApplication.shared.registerForRemoteNotifications()
-        //UIApplication.shared.registerUserNotificationSettings(center)
-    }
+//    func tryRegisterAPNS() {
+//        UIApplication.shared.registerForRemoteNotifications()
+//        //UIApplication.shared.registerUserNotificationSettings(center)
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,7 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.tryRegisterAPNS()
+        //self.tryRegisterAPNS()
+        UIApplication.shared.registerForRemoteNotifications()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -78,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
         print("tokenis:" + token)
         UserDefaults.standard.set(token, forKey: "pushtoken")
+        UserDefaults.standard.synchronize()
     }
 
     func application(_ application: UIApplication,
@@ -87,12 +91,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("getTokenErr:" + error.localizedDescription)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //background
+        //foreground with open from press push item, update list TODO
         addNotificationToArr(userInfo: userInfo)
+        //print("foreground")
         completionHandler(UIBackgroundFetchResult.newData)
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        //foreground
+        //background
+        //print("background")
         addNotificationToArr(userInfo: userInfo)
     }
     func addNotificationToArr(userInfo:[AnyHashable : Any]){
