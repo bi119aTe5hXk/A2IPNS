@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
         
+        
+        
         return true
     }
 //    func tryRegisterAPNS() {
@@ -117,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         notifyarr!.append([newDic])
         UserDefaults.standard.set(notifyarr, forKey: "notification_history")
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update_history_list"), object: nil, userInfo: nil)
     }
     
 

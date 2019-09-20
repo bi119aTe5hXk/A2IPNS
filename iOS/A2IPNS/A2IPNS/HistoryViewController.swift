@@ -40,6 +40,7 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
             
         }else{
             self.resetToNormalList()
+            NotificationCenter.default.addObserver(self, selector: #selector(resetToNormalList), name: NSNotification.Name(rawValue: "update_history_list"), object: nil)
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +89,7 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
         }
     }
     
-    func resetToNormalList() {
+    @objc func resetToNormalList() {
         self.refreshControl?.endRefreshing()
         notifyarr = UserDefaults.standard.array(forKey: "notification_history")
         notifyarr?.reverse()

@@ -80,16 +80,19 @@ class InitSettingsViewController: UITableViewController {
                 
             } else {
                 print("APNS NOT ALLOWED.")
-                let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        if UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            if UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
                         }
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                    }))
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
             }
         }
     }
