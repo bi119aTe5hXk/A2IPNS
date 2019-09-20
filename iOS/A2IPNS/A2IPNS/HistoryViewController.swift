@@ -36,9 +36,6 @@ class HistoryViewController: UITableViewController,UISearchBarDelegate {
         if !notFirstTimeBoot {
             //boot at first time
             var initView = self.storyboard?.instantiateViewController(withIdentifier: "InitSettingsNavViewController")
-            if #available(iOS 13.0, *) {
-                initView = self.storyboard?.instantiateViewController(identifier: "InitSettingsNavViewController")
-            }
             self.present(initView!, animated: true, completion: nil)
         }else{
             self.resetToNormalList()

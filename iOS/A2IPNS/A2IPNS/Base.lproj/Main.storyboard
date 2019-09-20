@@ -34,7 +34,7 @@
                     <tabBarItem key="tabBarItem" systemItem="featured" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="A2IPNS" id="8Th-9C-YD8">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tgl-CS-13I">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="ehc-lt-bSY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="ehc-lt-bSY">
                                 <rect key="frame" x="369" y="10" width="25" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -134,7 +134,6 @@ This procedure will pair both your iOS and Android device.</string>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Show QR code"/>
                                                     <connections>
-                                                        <action selector="showQRCodeBTNPressed:" destination="SBH-5V-XsE" eventType="touchUpInside" id="3I4-Dd-T5b"/>
                                                         <segue destination="9pv-A4-QxB" kind="show" id="vgx-Vk-xb5"/>
                                                     </connections>
                                                 </button>

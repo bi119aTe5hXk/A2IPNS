@@ -26,37 +26,15 @@ class InitSettingsViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         self.grantNotifyPermissionBTN.isEnabled = true
-        self.grantNotifyPermissionBTN.titleLabel?.text = "Grant permissions"
+        self.grantNotifyPermissionBTN.setTitle("Grant permissions", for: .normal)
         self.showQRCodeBTN.isEnabled = false
-        self.showQRCodeBTN.titleLabel?.text = "Show QR Code"
+        self.showQRCodeBTN.setTitle("Show QR Code", for: .normal)
         self.doneBTN.isEnabled = false
     }
 
 
     @IBAction func grantNotifyPermissionBTNPressed(_ sender: Any) {
-        if self.tryGrantNotificationPermission() {
-            let token = UserDefaults.standard.string(forKey: "pushtoken")
-            if token != nil {
-                self.grantNotifyPermissionBTN.isEnabled = false
-                self.grantNotifyPermissionBTN.titleLabel?.text = "Permission granted"
-                self.showQRCodeBTN.isEnabled = true
-                self.doneBTN.isEnabled = true
-            }else{
-                print("Error: Somehow permission is granted but token is nil. Try again?")
-            }
-        }else{
-            let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+        self.tryGrantNotificationPermission()
     }
 
 
@@ -66,8 +44,7 @@ class InitSettingsViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func tryGrantNotificationPermission() -> Bool {
-        var result = false
+    func tryGrantNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .badge, .sound])
@@ -77,14 +54,35 @@ class InitSettingsViewController: UITableViewController {
                 print("APNS Allowed")
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
+                    
+                    
+                    let token = UserDefaults.standard.string(forKey: "pushtoken")
+                    if token != nil {
+                        self.grantNotifyPermissionBTN.isEnabled = false
+                        self.grantNotifyPermissionBTN.setTitle("Permission granted", for: .normal)
+                        self.showQRCodeBTN.isEnabled = true
+                        self.doneBTN.isEnabled = true
+                    }else{
+                        print("Error: Somehow permission is granted but token is nil. Try again?")
+                    }
                 }
-                result = true
+                
+                
+                
             } else {
                 print("APNS NOT ALLOWED.")
-                result = false
+                let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
-        return result
     }
 
 
