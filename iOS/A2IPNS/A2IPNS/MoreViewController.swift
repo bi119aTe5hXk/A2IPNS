@@ -21,10 +21,20 @@ class MoreViewController: UITableViewController {
     }
 
     @IBAction func githubpage(_ sender: Any) {
-        let url = URL(string:"https://github.com/bi119aTe5hXk/A2IPNS")
+        let url = URL(string:projectGithubURL)
         if( UIApplication.shared.canOpenURL(url!) ) {
             UIApplication.shared.open(url!)
         }
+    }
+    @IBAction func a2pnsPageBTNPressed(_ sender: Any) {
+        let url = URL(string:a2pnsGooglePlayStoreURL)
+        if( UIApplication.shared.canOpenURL(url!) ) {
+            UIApplication.shared.open(url!)
+        }
+    }
+    @IBAction func showInitViewBTNPressed(_ sender: Any) {
+        let initView = self.storyboard?.instantiateViewController(withIdentifier: "InitSettingsNavViewController")
+        self.present(initView!, animated: true, completion: nil)
     }
     // MARK: - Table view data source
 

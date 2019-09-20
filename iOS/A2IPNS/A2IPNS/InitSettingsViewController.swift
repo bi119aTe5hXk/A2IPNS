@@ -15,7 +15,7 @@ class InitSettingsViewController: UITableViewController {
     @IBOutlet weak var installA2PNSBTN: UIButton!
     @IBOutlet weak var showQRCodeBTN: UIButton!
     @IBOutlet weak var doneBTN: UIButton!
-    
+
 
 
     override func viewDidLoad() {
@@ -26,12 +26,10 @@ class InitSettingsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        self.grantNotifyPermissionBTN.isEnabled = true
-        self.grantNotifyPermissionBTN.setTitle("Grant permissions", for: .normal)
-        self.showQRCodeBTN.isEnabled = false
-        self.showQRCodeBTN.setTitle("Show QR Code", for: .normal)
-        self.installA2PNSBTN.isEnabled = false
-        self.doneBTN.isEnabled = false
+
+
+        self.resetUI()
+        self.checkTokenAndSetUI()
     }
 
 
@@ -40,18 +38,18 @@ class InitSettingsViewController: UITableViewController {
     }
 
     @IBAction func installA2PNSBTNPressed(_ sender: Any) {
-        let url = URL(string:"https://play.google.com/store/apps/details?id=org.xlfdll.a2pns")
-        if( UIApplication.shared.canOpenURL(url!) ) {
+        let url = URL(string: a2pnsGooglePlayStoreURL)
+        if(UIApplication.shared.canOpenURL(url!)) {
             UIApplication.shared.open(url!)
         }
     }
-    
+
 
     @IBAction func doneBTNPressed(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "not_first_time")
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func tryGrantNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         // Request permission to display alerts and play sounds.
@@ -62,22 +60,8 @@ class InitSettingsViewController: UITableViewController {
                 print("APNS Allowed")
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
-                    
-                    
-                    let token = UserDefaults.standard.string(forKey: "pushtoken")
-                    if token != nil {
-                        self.grantNotifyPermissionBTN.isEnabled = false
-                        self.grantNotifyPermissionBTN.setTitle("✅ Permission granted", for: .normal)
-                        self.showQRCodeBTN.isEnabled = true
-                        self.installA2PNSBTN.isEnabled = true
-                        self.doneBTN.isEnabled = true
-                    }else{
-                        print("Error: Somehow permission is granted but token is nil. Try again?")
-                    }
+                    self.checkTokenAndSetUI()
                 }
-                
-                
-                
             } else {
                 print("APNS NOT ALLOWED.")
                 DispatchQueue.main.async {
@@ -92,9 +76,31 @@ class InitSettingsViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
-                
             }
         }
+    }
+    
+    func checkTokenAndSetUI() {
+        let token = UserDefaults.standard.string(forKey: "pushtoken")
+        if token != nil {
+            self.grantNotifyPermissionBTN.isEnabled = false
+            self.grantNotifyPermissionBTN.setTitle("✅ Permission granted", for: .normal)
+            self.showQRCodeBTN.isEnabled = true
+            self.installA2PNSBTN.isEnabled = true
+            self.doneBTN.isEnabled = true
+        } else {
+            print("Error: Somehow permission is granted but token is nil. Try again?")
+            self.resetUI()
+        }
+    }
+    
+    func resetUI() {
+        self.grantNotifyPermissionBTN.isEnabled = true
+        self.grantNotifyPermissionBTN.setTitle("Grant permissions", for: .normal)
+        self.showQRCodeBTN.isEnabled = false
+        self.showQRCodeBTN.setTitle("Show QR Code", for: .normal)
+        self.installA2PNSBTN.isEnabled = false
+        self.doneBTN.isEnabled = false
     }
 
 
