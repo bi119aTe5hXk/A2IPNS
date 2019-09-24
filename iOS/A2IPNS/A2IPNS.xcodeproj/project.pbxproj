@@ -86,14 +86,9 @@
 				8640925522F6AC94006DE85C /* A2IPNS.entitlements */,
 				8640922322F6A831006DE85C /* AppDelegate.swift */,
 				86ABAF062334DC80005F5439 /* URLs.swift */,
-				862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */,
-				862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */,
-				8640925922F6BA3B006DE85C /* HistoryViewController.swift */,
-				86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */,
-				8640925322F6A8AB006DE85C /* QRViewController.swift */,
-				8640922922F6A831006DE85C /* Main.storyboard */,
+				86ABAF082334DF67005F5439 /* Controllers */,
+				86ABAF092334DF7B005F5439 /* Views */,
 				8640922C22F6A834006DE85C /* Assets.xcassets */,
-				8640922E22F6A834006DE85C /* LaunchScreen.storyboard */,
 				8640923122F6A834006DE85C /* Info.plist */,
 			);
 			path = A2IPNS;
@@ -106,6 +101,27 @@
 				4728C9D023142D0600DF8F7F /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86ABAF082334DF67005F5439 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */,
+				862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */,
+				8640925922F6BA3B006DE85C /* HistoryViewController.swift */,
+				86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */,
+				8640925322F6A8AB006DE85C /* QRViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		86ABAF092334DF7B005F5439 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8640922922F6A831006DE85C /* Main.storyboard */,
+				8640922E22F6A834006DE85C /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +360,7 @@
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 201908241309;
+				CURRENT_PROJECT_VERSION = 201909241222;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -366,9 +382,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Huang Xingkai (ZSK3Q7V672)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Huang Xingkai (HR66SGQEZ4)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 201908241309;
+				CURRENT_PROJECT_VERSION = 201909241222;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -378,7 +394,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.bi119aTe5hXk.A2IPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = A2IPNSAppStore;
+				PROVISIONING_PROFILE_SPECIFIER = A2iPNSAppStore2;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

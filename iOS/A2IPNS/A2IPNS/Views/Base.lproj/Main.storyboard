@@ -318,7 +318,6 @@ This procedure will pair both your iOS and Android device.</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSY-eu-bh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="lsF-Gx-s7J"/>
             </objects>
             <point key="canvasLocation" x="952" y="281"/>
         </scene>
@@ -390,7 +389,7 @@ This procedure will pair both your iOS and Android device.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBA-Bu-jGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1939.1304347826087" y="236.38392857142856"/>
+            <point key="canvasLocation" x="1939" y="281"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w8q-cd-xlB">
