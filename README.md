@@ -25,7 +25,7 @@ Refer to [here](https://github.com/xlfdll/A2PNS/blob/master/README.md) for Andro
 
 2. Install [A2PNS](https://github.com/xlfdll/A2PNS) app on your Android device, and grant notification permissions. Scan the QR code which shown on your iOS device, using your Android device to pair two devices.
 
-3. Enable the service on Android app.
+3. Enable the service on Android app. And select applications to be monitored in settings.
 
 4. Wait for notifications showing up on your Android device. They should be automatically delivered to your iOS devices momentarily.
 
