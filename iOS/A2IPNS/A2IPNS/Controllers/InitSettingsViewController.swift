@@ -29,7 +29,7 @@ class InitSettingsViewController: UITableViewController {
 
 
         self.resetUI()
-        self.checkTokenAndSetUI()
+        self.tryGrantNotificationPermission()
     }
 
 
