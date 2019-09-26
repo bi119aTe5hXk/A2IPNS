@@ -23,13 +23,23 @@ class MoreViewController: UITableViewController {
     @IBAction func githubpage(_ sender: Any) {
         let url = URL(string:projectGithubURL)
         if( UIApplication.shared.canOpenURL(url!) ) {
-            UIApplication.shared.open(url!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url!)
+            }
         }
     }
     @IBAction func a2pnsPageBTNPressed(_ sender: Any) {
         let url = URL(string:a2pnsGooglePlayStoreURL)
         if( UIApplication.shared.canOpenURL(url!) ) {
-            UIApplication.shared.open(url!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url!)
+            }
         }
     }
     @IBAction func showInitViewBTNPressed(_ sender: Any) {

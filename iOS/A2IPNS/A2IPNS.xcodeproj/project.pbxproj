@@ -16,6 +16,7 @@
 		8640925422F6A8AB006DE85C /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640925322F6A8AB006DE85C /* QRViewController.swift */; };
 		8640925822F6ADF2006DE85C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8640925722F6ADF2006DE85C /* UserNotifications.framework */; };
 		8640925A22F6BA3B006DE85C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8640925922F6BA3B006DE85C /* HistoryViewController.swift */; };
+		868C0E3D233D84F4009A280B /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868C0E3C233D84F4009A280B /* CopyableLabel.swift */; };
 		86ABAF072334DC80005F5439 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABAF062334DC80005F5439 /* URLs.swift */; };
 		86C98ED222FEBA5300F29DD8 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		8640925522F6AC94006DE85C /* A2IPNS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = A2IPNS.entitlements; sourceTree = "<group>"; };
 		8640925722F6ADF2006DE85C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8640925922F6BA3B006DE85C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		868C0E3C233D84F4009A280B /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		86ABAF062334DC80005F5439 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		86C98ED122FEBA5300F29DD8 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				8640925522F6AC94006DE85C /* A2IPNS.entitlements */,
 				8640922322F6A831006DE85C /* AppDelegate.swift */,
 				86ABAF062334DC80005F5439 /* URLs.swift */,
+				868C0E3C233D84F4009A280B /* CopyableLabel.swift */,
 				86ABAF082334DF67005F5439 /* Controllers */,
 				86ABAF092334DF7B005F5439 /* Views */,
 				8640922C22F6A834006DE85C /* Assets.xcassets */,
@@ -209,6 +212,7 @@
 				86C98ED222FEBA5300F29DD8 /* MoreViewController.swift in Sources */,
 				86ABAF072334DC80005F5439 /* URLs.swift in Sources */,
 				8640922422F6A831006DE85C /* AppDelegate.swift in Sources */,
+				868C0E3D233D84F4009A280B /* CopyableLabel.swift in Sources */,
 				8640925422F6A8AB006DE85C /* QRViewController.swift in Sources */,
 				862BF0242334BDCA00B0B91A /* InitSettingsViewController.swift in Sources */,
 			);
@@ -287,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -342,7 +346,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -360,10 +364,10 @@
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 201909261334;
+				CURRENT_PROJECT_VERSION = 201909270846;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,10 +388,10 @@
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Huang Xingkai (HR66SGQEZ4)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 201909261334;
+				CURRENT_PROJECT_VERSION = 201909270846;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

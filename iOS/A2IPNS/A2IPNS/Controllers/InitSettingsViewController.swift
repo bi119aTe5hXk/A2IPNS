@@ -44,7 +44,12 @@ class InitSettingsViewController: UITableViewController {
     @IBAction func installA2PNSBTNPressed(_ sender: Any) {
         let url = URL(string: a2pnsGooglePlayStoreURL)
         if(UIApplication.shared.canOpenURL(url!)) {
-            UIApplication.shared.open(url!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url!)
+            }
         }
     }
 
@@ -55,33 +60,48 @@ class InitSettingsViewController: UITableViewController {
     }
 
     func tryGrantNotificationPermission() {
-        let center = UNUserNotificationCenter.current()
-        // Request permission to display alerts and play sounds.
-        center.requestAuthorization(options: [.alert, .badge, .sound])
-        { (granted, error) in
-            // Enable or disable features based on authorization.
-            if granted {
-                print("APNS Allowed")
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                    self.checkTokenAndSetUI()
-                }
-            } else {
-                print("APNS NOT ALLOWED.")
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            if UIApplication.shared.canOpenURL(url) {
-                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            // Request permission to display alerts and play sounds.
+            center.requestAuthorization(options: [.alert, .badge, .sound])
+            { (granted, error) in
+                // Enable or disable features based on authorization.
+                if granted {
+                    print("APNS Allowed")
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                        self.checkTokenAndSetUI()
+                    }
+                } else {
+                    print("APNS NOT ALLOWED.")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                if UIApplication.shared.canOpenURL(url) {
+                                    if #available(iOS 10.0, *) {
+                                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                    } else {
+                                        // Fallback on earlier versions
+                                        UIApplication.shared.openURL(url)
+                                    }
+                                }
                             }
-                        }
-                    }))
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                        }))
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
+        } else {
+            // Fallback on earlier versions
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+            UIApplication.shared.registerForRemoteNotifications()
+            self.checkTokenAndSetUI()
         }
+        
     }
     
     func checkTokenAndSetUI() {
