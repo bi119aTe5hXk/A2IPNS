@@ -90,7 +90,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kot-8b-HvT">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Grant permissions"/>
                                                     <connections>
                                                         <action selector="grantNotifyPermissionBTNPressed:" destination="SBH-5V-XsE" eventType="touchUpInside" id="pfi-0P-CT8"/>
@@ -131,7 +131,7 @@ Please login into your Google account and press the install button.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gou-Sz-5i8">
                                                     <rect key="frame" x="0.0" y="-5" width="414" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Install A2PNS from Google Play"/>
                                                     <connections>
                                                         <action selector="installA2PNSBTNPressed:" destination="SBH-5V-XsE" eventType="touchUpInside" id="Ugj-Eu-xym"/>
@@ -172,7 +172,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oB3-9R-ykU">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Show QR code"/>
                                                     <connections>
                                                         <segue destination="9pv-A4-QxB" kind="show" id="vgx-Vk-xb5"/>
@@ -194,7 +194,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etb-Jr-Svr">
                                                     <rect key="frame" x="0.0" y="-5" width="414" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Done"/>
                                                     <connections>
                                                         <action selector="doneBTNPressed:" destination="SBH-5V-XsE" eventType="touchUpInside" id="WTy-Cx-i01"/>
@@ -445,7 +445,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiC-Q8-gOt">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Initialization settings"/>
                                                     <connections>
                                                         <action selector="showInitViewBTNPressed:" destination="RMV-gW-3zA" eventType="touchUpInside" id="FUe-ma-A5O"/>
@@ -463,7 +463,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-9a-wuG">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Show QR code"/>
                                                     <connections>
                                                         <segue destination="9pv-A4-QxB" kind="show" id="6cu-fY-oHh"/>
@@ -485,7 +485,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ow-1Q-9ch">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="A2PNS at Google Play"/>
                                                     <connections>
                                                         <action selector="a2pnsPageBTNPressed:" destination="RMV-gW-3zA" eventType="touchUpInside" id="GEz-u5-aIX"/>
@@ -503,7 +503,7 @@ This procedure will pair both your iOS and Android device.</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-Zf-6jk">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Project Github Page"/>
                                                     <connections>
                                                         <action selector="githubpage:" destination="RMV-gW-3zA" eventType="touchUpInside" id="EXA-kv-sSN"/>
