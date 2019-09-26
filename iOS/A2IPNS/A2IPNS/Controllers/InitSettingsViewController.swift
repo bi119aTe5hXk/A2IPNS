@@ -29,7 +29,11 @@ class InitSettingsViewController: UITableViewController {
 
 
         self.resetUI()
-        self.tryGrantNotificationPermission()
+        let notFirstTimeBoot = UserDefaults.standard.bool(forKey: "not_first_time")
+        if notFirstTimeBoot {
+            self.tryGrantNotificationPermission()//TODO
+            //self.checkTokenAndSetUI()
+        }
     }
 
 
