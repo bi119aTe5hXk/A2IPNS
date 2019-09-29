@@ -13,7 +13,7 @@ An app series to enable Android notification redirection to iOS platforms
 
     You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services. The App ID must be explicit. Don't forget to check the "Push Notifications" box in "Capabilities" list.
 
-2. Create an unencrypted pem file from cert and p8 files. See [INSTALL.md in Web folder](https://github.com/bi119aTe5hXk/A2IPNS/tree/master/Web/INSTALL.me) for more detail.
+2. Create an unencrypted pem file from cert and p8 files. See [INSTALL.md in Web folder](https://github.com/bi119aTe5hXk/A2IPNS/tree/master/Web/INSTALL.md) for more detail.
 
 
 3. Generate a Provisioning Profile with the Explicit App ID, and download the .mobileprovision file.
