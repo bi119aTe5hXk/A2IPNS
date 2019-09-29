@@ -1,11 +1,9 @@
 <?php
 
  	$updatetime = "20190101";
-	$authKey = "AuthKey_YOURAUTHKEY.p8";
+	$cert = "AuthKey_YOUCERT.pem";
 	$array = array(
-        "authKey" => base64_encode(file_get_contents($authKey)) ,
-        "teamid" => 'YOURTEAMID',
-		"authkeyid" => 'YOURAUTHKEY',
+        "cert" => base64_encode(file_get_contents($cert)),
 		"id" => 'net.bi119aTe5hXk.A2IPNS',
     );
 
