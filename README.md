@@ -9,11 +9,12 @@ An app series to enable Android notification redirection to iOS platforms
 
 ## How to Build
 
-1. Add a new Explicit App ID in your Apple Developer account. [Then get a .p8 file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns).
+1. Add a new Explicit App ID in your Apple Developer account. [Then get a .cert file from Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apns?language=objc).
 
     You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services. The App ID must be explicit. Don't forget to check the "Push Notifications" box in "Capabilities" list.
 
-2. Edit Web/cert_data.php file by replacing $authKey, and [teamid, authkeyid, id] in the array (id is the App ID added in step 1). Then upload cert.php, cert_data.php and .p8 files to your server. Notice that this requires PHP 7.1 or later versions with OpenSSL extension installed. This process only needs to be done once to provide authentication token to Android app at launch.
+2. Create an unencrypted pem file from cert and p8 files. See [INSTALL.md in Web folder](https://github.com/bi119aTe5hXk/A2IPNS/tree/master/Web/INSTALL.me) for more detail.
+
 
 3. Generate a Provisioning Profile with the Explicit App ID, and download the .mobileprovision file.
 
@@ -29,7 +30,7 @@ Refer to [here](https://github.com/xlfdll/A2PNS/blob/master/README.md) for Andro
 
 3. Enable the service on Android app. And select applications to be monitored in settings.
 
-4. Wait for notifications showing up on your Android device. They should be automatically delivered to your iOS devices momentarily.
+4. Notifications should showing up on your Android device. They should be automatically delivered to your iOS devices momentarily.
 
 ## License / Contributors
 
