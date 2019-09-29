@@ -2,16 +2,17 @@
 
 1. Download and import your .cert file to your KeychainAccess.app, find the certificate and export .p12 private key.
 
-2. Open Terminal.app, cd to the path where the .p12 file is. And execute these commandline:
+2. Open Terminal.app, cd to the path where the .p12 file is. And execute these command at each line:
 
-   - openssl pkcs12 -clcerts -nokeys -out cert.pem -in Certificates.p12
+```
+openssl pkcs12 -clcerts -nokeys -out cert.pem -in Certificates.p12
 
-   - openssl pkcs12 -nocerts -out key.pem -in Certificates.p12
+openssl pkcs12 -nocerts -out key.pem -in Certificates.p12
 
-   - openssl rsa -in key.pem -out key.unencrypted.pem
+openssl rsa -in key.pem -out key.unencrypted.pem
 
-   - cat cert.pem key.unencrypted.pem > ck.pem
-
+cat cert.pem key.unencrypted.pem > ck.pem
+```
 
 3. Edit Web/cert_data.php file by replacing $cert and change $updatetime to currect date or your favorite number. 
 
