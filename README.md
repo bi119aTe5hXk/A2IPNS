@@ -1,5 +1,7 @@
 # Android to iOS Push Notification Services
-An app series to enable Android notification redirection to iOS platforms
+An app series to enable Android notification redirection to iOS platforms.
+
+This project require Android client [A2PNS](https://github.com/xlfdll/A2PNS).
 
 <a href="https://play.google.com/store/apps/details?id=org.xlfdll.a2pns">
   <img src="https://github.com/xlfdll/xlfdll.github.io/raw/master/images/google-play-badge.png" alt="Get A2PNS (Android) on Google Play Store" height="64">
