@@ -1,9 +1,9 @@
 <?php
 
  	$updatetime = "20190101";
-	$maincert = "cert_pro.pem";
-	$wwdrcacert = "cert_ca.pem";
-	$rootcert = "cert_root.pem";
+	$maincert = "cert_pro.crt";
+	$wwdrcacert = "cert_ca.crt";
+	$rootcert = "cert_root.crt";
 	$array = array(
         "cert" => array(
           base64_encode(file_get_contents($maincert)),
