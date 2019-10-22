@@ -1,8 +1,8 @@
 <?php
 
  	$updatetime = "20190101";
-	$maincert = "cert_pro.crt";
-	$wwdrcacert = "cert_ca.crt";
+	$maincert = "aps_pro.crt";
+	$cacert = "cert_ca.crt";
 	$rootcert = "cert_root.crt";
 	$array = array(
         "cert" => array(
