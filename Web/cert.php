@@ -1,6 +1,6 @@
 <?php
-    require "vendor/autoload.php";
-    require "jwt.php";
+    require_once "vendor/autoload.php";
+    require_once "jwt.php";
 
     $jwt_file_name = "A2IPNS_JWT.json";
     $jwt_file_expire_minutes = 50;
