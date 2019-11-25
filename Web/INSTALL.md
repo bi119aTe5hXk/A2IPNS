@@ -1,22 +1,7 @@
 # How To Setup Server
 
-1. Download application's remote push notification .cert file from Apple developer portal.
-
-2. Download AppleWWDRCA.cer and AppleRootCertificate.cer from [Apple PKI](https://www.apple.com/certificateauthority/).
-
-3. Open Terminal.app, cd to the path where the .cer file is. And execute this command to covert .cer file to .crt file.
-
-```
-openssl x509 -in aps_pro.cer -inform DER -out cert_pro.crt
-
-openssl x509 -in AppleWWDRCA.cer -inform DER -out cert_ca.crt
-
-openssl x509 -in AppleRootCertificate.cer -inform DER -out cert_root.crt
-```
-
-4. Edit Web/cert_data.php file by replacing $cert and change $updatetime to currect date or your favorite number. 
-
-5. Upload cert.php, cert_data.php and all .cert files to your server. 
-	
-	Notice that this requires PHP 7.1 or later versions with OpenSSL extension installed. 
-	This process only needs to be done once to provide authentication token to Android app at launch.
+1. Copy *.php, *.p8, and composer.* to the server
+2. In the directory of above files, run **composer install** or **composer.phar install** (see which one works)
+   * If both are not working, you need to [install Composer](https://getcomposer.org/download/)
+3. Modify jwt_data.php, and replace all data with yours (see [here](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns) to know what are required)
+4. Done

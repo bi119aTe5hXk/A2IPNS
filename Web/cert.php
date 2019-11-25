@@ -1,20 +1,22 @@
 <?php
-    include_once "cert_data.php";
+    require "vendor/autoload.php";
+    require "jwt.php";
 
-    $cipher = "aes-256-gcm";
-    $ivlen = openssl_cipher_iv_length($cipher);
-    $iv = openssl_random_pseudo_bytes($ivlen);
-    $tag = "";
-    $tag_length = 16;
-    $aad = "A2IPNS";
+    $jwt_file_name = "A2IPNS_JWT.json";
+    $jwt_file_expire_minutes = 50;
 
-    $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv, $tag, $aad, $tag_length);
-    $ciphertext_base64 = base64_encode($ciphertext_raw).":".base64_encode($tag).":".base64_encode($iv);
+    $time = time();
+    $jwt_existing_data = file_exists($jwt_file_name) ? json_decode(file_get_contents($jwt_file_name)) : NULL;
 
-    $array = array(
-        "time" => $updatetime ,
-        "cert" => $ciphertext_base64,
-    );
-    $json = json_encode( $array );
-    echo $json;
+    if (is_null($jwt_existing_data) || ((int)date("i", $time - $jwt_existing_data->iat)) > $jwt_file_expire_minutes)
+    {
+        $jwt_existing_data = array(
+            "iat" => $time,
+            "jwt" => (string)generate_a2ipns_jwt($time)
+        );
+
+        file_put_contents($jwt_file_name, json_encode($jwt_existing_data));
+    }
+    
+    echo json_encode($jwt_existing_data);
 ?>
