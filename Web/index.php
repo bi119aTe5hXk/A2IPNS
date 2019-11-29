@@ -11,6 +11,7 @@
     if (is_null($jwt_existing_data) || ($time - $jwt_existing_data->iat) / 60 > $jwt_file_expire_minutes)
     {
         $jwt_existing_data = array(
+            "id" =>"net.bi119aTe5hXk.A2IPNS",
             "iat" => $time,
             "jwt" => (string)generate_a2ipns_jwt($time)
         );
