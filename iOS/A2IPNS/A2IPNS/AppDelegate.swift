@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      deviceToken: Data) {
         //self.sendDeviceTokenToServer(data: deviceToken)
         let token = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
-        print("tokenis:" + token)
+        print("tokenIs:" + token)
         UserDefaults.standard.set(token, forKey: "pushtoken")
         UserDefaults.standard.synchronize()
     }

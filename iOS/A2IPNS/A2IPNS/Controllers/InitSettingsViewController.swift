@@ -65,6 +65,15 @@ class InitSettingsViewController: UITableViewController {
             // Request permission to display alerts and play sounds.
             center.requestAuthorization(options: [.alert, .badge, .sound])
             { (granted, error) in
+                if (error != nil){
+                    print("grant notifation error \(String(error!.localizedDescription))")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Grant Notifation Error (X_X)", message: error!.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                
                 // Enable or disable features based on authorization.
                 if granted {
                     print("APNS Allowed")
@@ -93,27 +102,32 @@ class InitSettingsViewController: UITableViewController {
                     }
                 }
             }
-        } else {
-            // Fallback on earlier versions
+        }else {
             let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
             let setting = UIUserNotificationSettings(types: type, categories: nil)
             UIApplication.shared.registerUserNotificationSettings(setting)
             UIApplication.shared.registerForRemoteNotifications()
             self.checkTokenAndSetUI()
         }
-        
     }
+    
+    
     
     func checkTokenAndSetUI() {
         let token = UserDefaults.standard.string(forKey: "pushtoken")
-        if token != nil {
+        if token != nil && (token?.lengthOfBytes(using: .utf8))! > 0 {
             self.grantNotifyPermissionBTN.isEnabled = false
             self.grantNotifyPermissionBTN.setTitle("✅ Permission granted", for: .normal)
             self.showQRCodeBTN.isEnabled = true
             self.installA2PNSBTN.isEnabled = true
             self.doneBTN.isEnabled = true
         } else {
-            print("Error: Somehow permission is granted but token is nil. Try again?")
+            print(" Error: Somehow permission is granted but token is nil. Try again?")
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error (X_X)", message: "Somehow permission is granted but token is nil. Try again?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
             self.resetUI()
         }
     }

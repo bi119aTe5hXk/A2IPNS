@@ -14,12 +14,14 @@ class QRViewController: UIViewController {
     @IBOutlet weak var imgQRCode: UIImageView!
     @IBOutlet weak var tokenLabel:UILabel!
     var qrcodeImage: CIImage!
-    let token = UserDefaults.standard.string(forKey: "pushtoken")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.synchronize()
+        let token = UserDefaults.standard.string(forKey: "pushtoken")
         // Do any additional setup after loading the view.
-        if token != nil {
+        if token != nil && (token?.lengthOfBytes(using: .utf8))! > 0 {
             
             self.tokenLabel.text = token!
             let qrDict:[String:String] = ["id":"A2IPNS","token":token!];
@@ -27,8 +29,9 @@ class QRViewController: UIViewController {
             print("qrstr:" + String(data: data!, encoding: String.Encoding.utf8)!)
             let qrimage = generateQRCode(from: String(data: data!, encoding: String.Encoding.utf8)!)
             self.imgQRCode.image = qrimage
+            self.imgQRCode.layer.magnificationFilter = CALayerContentsFilter(rawValue: kCISamplerFilterNearest)
         }else{
-            self.tokenLabel.text = "Please enable Notification in Settings application."
+            self.tokenLabel.text = "Please enable Notification in Settings."
         }
     }
     
