@@ -1,0 +1,93 @@
+
+/* Class = "UILabel"; text = "Scan the QR code using your Android device.\nThis procedure will pair both your iOS and Android device."; ObjectID = "39D-Ou-nbz"; */
+"39D-Ou-nbz.text" = "Scan the QR code using your Android device.\nThis procedure will pair both your iOS and Android device.";
+
+/* Class = "UILabel"; text = "This application required remote push notification permission for receiving notification from server-side which is your Android device. "; ObjectID = "4gK-yD-Wpi"; */
+"4gK-yD-Wpi.text" = "This application required remote push notification permission for receiving notification from server-side which is your Android device. ";
+
+/* Class = "UINavigationItem"; title = "A2IPNS"; ObjectID = "8Th-9C-YD8"; */
+"8Th-9C-YD8.title" = "A2IPNS";
+
+/* Class = "UIButton"; normalTitle = "A2PNS at Google Play"; ObjectID = "8ow-1Q-9ch"; */
+"8ow-1Q-9ch.normalTitle" = "A2PNS at Google Play";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "D1Z-xS-YkV"; */
+"D1Z-xS-YkV.title" = "Clear";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "DzP-o5-5te"; */
+"DzP-o5-5te.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Initialization settings"; ObjectID = "GiC-Q8-gOt"; */
+"GiC-Q8-gOt.normalTitle" = "Initialization settings";
+
+/* Class = "UITableViewSection"; headerTitle = "SETTINGS"; ObjectID = "Ioa-KW-5WN"; */
+"Ioa-KW-5WN.headerTitle" = "SETTINGS";
+
+/* Class = "UIButton"; normalTitle = "Grant permissions"; ObjectID = "Kot-8b-HvT"; */
+"Kot-8b-HvT.normalTitle" = "Grant permissions";
+
+/* Class = "UISearchBar"; LQU-sg-IlJ.scopeButtonTitles[0] = "Title"; ObjectID = "LQU-sg-IlJ"; */
+"LQU-sg-IlJ.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; LQU-sg-IlJ.scopeButtonTitles[1] = "Title"; ObjectID = "LQU-sg-IlJ"; */
+"LQU-sg-IlJ.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UITableViewSection"; footerTitle = "If you choose not to allow the notification service, this application will not work as normal."; ObjectID = "MAA-4T-Kg5"; */
+"MAA-4T-Kg5.footerTitle" = "If you choose not to allow the notification service, this application will not work as normal.";
+
+/* Class = "UITableViewSection"; headerTitle = "1. Notification permission"; ObjectID = "MAA-4T-Kg5"; */
+"MAA-4T-Kg5.headerTitle" = "1. Notification permission";
+
+/* Class = "UINavigationItem"; title = "Initialization settings"; ObjectID = "Ou7-tg-uny"; */
+"Ou7-tg-uny.title" = "Initialization settings";
+
+/* Class = "UIButton"; normalTitle = "Project Github Page"; ObjectID = "P2v-Zf-6jk"; */
+"P2v-Zf-6jk.normalTitle" = "Project Github Page";
+
+/* Class = "UITableViewSection"; footerTitle = "Developer: @bi119aTe5hXk, @xlfdll"; ObjectID = "czX-eb-91S"; */
+"czX-eb-91S.footerTitle" = "Developer: @bi119aTe5hXk, @xlfdll";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "etb-Jr-Svr"; */
+"etb-Jr-Svr.normalTitle" = "Done";
+
+/* Class = "UITableViewSection"; headerTitle = "3. Scan QR code"; ObjectID = "fOb-fB-oQV"; */
+"fOb-fB-oQV.headerTitle" = "3. Scan QR code";
+
+/* Class = "UIButton"; normalTitle = "Install A2PNS from Google Play"; ObjectID = "gou-Sz-5i8"; */
+"gou-Sz-5i8.normalTitle" = "Install A2PNS from Google Play";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "iwM-rO-Yx5"; */
+"iwM-rO-Yx5.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Show QR code"; ObjectID = "jCS-9a-wuG"; */
+"jCS-9a-wuG.normalTitle" = "Show QR code";
+
+/* Class = "UITableViewSection"; headerTitle = "Notification detail"; ObjectID = "lKt-P1-wpN"; */
+"lKt-P1-wpN.headerTitle" = "Notification detail";
+
+/* Class = "UIButton"; normalTitle = "Show QR code"; ObjectID = "oB3-9R-ykU"; */
+"oB3-9R-ykU.normalTitle" = "Show QR code";
+
+/* Class = "UITableViewSection"; footerTitle = "Application will be install to your Android device automatically."; ObjectID = "pgn-a7-Kd5"; */
+"pgn-a7-Kd5.footerTitle" = "Application will be install to your Android device automatically.";
+
+/* Class = "UITableViewSection"; headerTitle = "2. Install A2PNS"; ObjectID = "pgn-a7-Kd5"; */
+"pgn-a7-Kd5.headerTitle" = "2. Install A2PNS";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "tJT-Xa-dLX"; */
+"tJT-Xa-dLX.text" = "Title";
+
+/* Class = "UILabel"; text = "Please enable Notification in Settings application."; ObjectID = "thp-1z-gP6"; */
+"thp-1z-gP6.text" = "Please enable Notification in Settings application.";
+
+/* Class = "UILabel"; text = "This step will open Safari and visit A2PNS at Google Play Store. \nPlease login into your Google account and press the install button."; ObjectID = "uyK-uf-JCd"; */
+"uyK-uf-JCd.text" = "This step will open Safari and visit A2PNS at Google Play Store. \nPlease login into your Google account and press the install button.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "vav-7U-nJW"; */
+"vav-7U-nJW.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "More"; ObjectID = "yWr-mo-THT"; */
+"yWr-mo-THT.title" = "More";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "ydn-G6-luJ"; */
+"ydn-G6-luJ.title" = "History";

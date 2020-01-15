@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  A2IPNS
+
+  Created by bi119aTe5hXk on 2020/01/14.
+  Copyright © 2020 bi119aTe5hXk. All rights reserved.
+*/
+"ERROR_ALERT_TITLE"="Error (X_X)";
+"OK"="OK";
+"GRANT_NOFITICATION_ERROR_ALERT_TITLE"="Notification required";
+"GRANT_NOFITICATION_ERROR_ALERT_MESSAGE"="This application will not work without notification promission.\nPlease enable it in Settings.";
+"OPEN_SETTINGS"="Open Settings";

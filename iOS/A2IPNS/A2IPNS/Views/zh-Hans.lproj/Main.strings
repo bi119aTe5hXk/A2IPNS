@@ -1,0 +1,93 @@
+
+/* Class = "UILabel"; text = "Scan the QR code using your Android device.\nThis procedure will pair both your iOS and Android device."; ObjectID = "39D-Ou-nbz"; */
+"39D-Ou-nbz.text" = "用您的安卓设备扫描二维码进行配对";
+
+/* Class = "UILabel"; text = "This application required remote push notification permission for receiving notification from server-side which is your Android device. "; ObjectID = "4gK-yD-Wpi"; */
+"4gK-yD-Wpi.text" = "本程序需要接收从安卓端发来的通知, 所以需要推送通知的权限.";
+
+/* Class = "UINavigationItem"; title = "A2IPNS"; ObjectID = "8Th-9C-YD8"; */
+"8Th-9C-YD8.title" = "A2IPNS";
+
+/* Class = "UIButton"; normalTitle = "A2PNS at Google Play"; ObjectID = "8ow-1Q-9ch"; */
+"8ow-1Q-9ch.normalTitle" = "在GooglePlay上查看A2PNS";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "D1Z-xS-YkV"; */
+"D1Z-xS-YkV.title" = "清除";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "DzP-o5-5te"; */
+"DzP-o5-5te.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Initialization settings"; ObjectID = "GiC-Q8-gOt"; */
+"GiC-Q8-gOt.normalTitle" = "初始化界面";
+
+/* Class = "UITableViewSection"; headerTitle = "SETTINGS"; ObjectID = "Ioa-KW-5WN"; */
+"Ioa-KW-5WN.headerTitle" = "设置";
+
+/* Class = "UIButton"; normalTitle = "Grant permissions"; ObjectID = "Kot-8b-HvT"; */
+"Kot-8b-HvT.normalTitle" = "获得权限";
+
+/* Class = "UISearchBar"; LQU-sg-IlJ.scopeButtonTitles[0] = "Title"; ObjectID = "LQU-sg-IlJ"; */
+"LQU-sg-IlJ.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; LQU-sg-IlJ.scopeButtonTitles[1] = "Title"; ObjectID = "LQU-sg-IlJ"; */
+"LQU-sg-IlJ.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UITableViewSection"; footerTitle = "If you choose not to allow the notification service, this application will not work as normal."; ObjectID = "MAA-4T-Kg5"; */
+"MAA-4T-Kg5.footerTitle" = "如果您不选择允许获取推送通知权限的话,本程序将无法正常运作.";
+
+/* Class = "UITableViewSection"; headerTitle = "1. Notification permission"; ObjectID = "MAA-4T-Kg5"; */
+"MAA-4T-Kg5.headerTitle" = "1. 推送通知权限";
+
+/* Class = "UINavigationItem"; title = "Initialization settings"; ObjectID = "Ou7-tg-uny"; */
+"Ou7-tg-uny.title" = "初始化界面";
+
+/* Class = "UIButton"; normalTitle = "Project Github Page"; ObjectID = "P2v-Zf-6jk"; */
+"P2v-Zf-6jk.normalTitle" = "本程序在Github的页面";
+
+/* Class = "UITableViewSection"; footerTitle = "Developer: @bi119aTe5hXk, @xlfdll"; ObjectID = "czX-eb-91S"; */
+"czX-eb-91S.footerTitle" = "开发者: @bi119aTe5hXk, @xlfdll";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "etb-Jr-Svr"; */
+"etb-Jr-Svr.normalTitle" = "完成";
+
+/* Class = "UITableViewSection"; headerTitle = "3. Scan QR code"; ObjectID = "fOb-fB-oQV"; */
+"fOb-fB-oQV.headerTitle" = "3. 扫描二维码";
+
+/* Class = "UIButton"; normalTitle = "Install A2PNS from Google Play"; ObjectID = "gou-Sz-5i8"; */
+"gou-Sz-5i8.normalTitle" = "从Google Play上安装A2PNS";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "iwM-rO-Yx5"; */
+"iwM-rO-Yx5.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Show QR code"; ObjectID = "jCS-9a-wuG"; */
+"jCS-9a-wuG.normalTitle" = "显示二维码";
+
+/* Class = "UITableViewSection"; headerTitle = "Notification detail"; ObjectID = "lKt-P1-wpN"; */
+"lKt-P1-wpN.headerTitle" = "推送详细";
+
+/* Class = "UIButton"; normalTitle = "Show QR code"; ObjectID = "oB3-9R-ykU"; */
+"oB3-9R-ykU.normalTitle" = "显示二维码";
+
+/* Class = "UITableViewSection"; footerTitle = "Application will be install to your Android device automatically."; ObjectID = "pgn-a7-Kd5"; */
+"pgn-a7-Kd5.footerTitle" = "服务端应用程序将会自动安装到您的安卓设备上.";
+
+/* Class = "UITableViewSection"; headerTitle = "2. Install A2PNS"; ObjectID = "pgn-a7-Kd5"; */
+"pgn-a7-Kd5.headerTitle" = "2. 安装A2PNS";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "tJT-Xa-dLX"; */
+"tJT-Xa-dLX.text" = "Title";
+
+/* Class = "UILabel"; text = "Please enable Notification in Settings application."; ObjectID = "thp-1z-gP6"; */
+"thp-1z-gP6.text" = "请在设置中允许本应用接收推送通知.";
+
+/* Class = "UILabel"; text = "This step will open Safari and visit A2PNS at Google Play Store. \nPlease login into your Google account and press the install button."; ObjectID = "uyK-uf-JCd"; */
+"uyK-uf-JCd.text" = "将跳转至Safari浏览器里查看Google Play Store里的A2PNS应用程序页面. \n请登录至您的Google账户然后进行安装.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "vav-7U-nJW"; */
+"vav-7U-nJW.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "More"; ObjectID = "yWr-mo-THT"; */
+"yWr-mo-THT.title" = "更多";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "ydn-G6-luJ"; */
+"ydn-G6-luJ.title" = "历史记录";

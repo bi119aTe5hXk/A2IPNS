@@ -68,8 +68,8 @@ class InitSettingsViewController: UITableViewController {
                 if (error != nil){
                     print("grant notifation error \(String(error!.localizedDescription))")
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Grant Notifation Error (X_X)", message: error!.localizedDescription, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        let alert = UIAlertController(title: NSLocalizedString("ERROR_ALERT_TITLE", comment: ""), message: error!.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .cancel, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
@@ -84,8 +84,8 @@ class InitSettingsViewController: UITableViewController {
                 } else {
                     print("APNS NOT ALLOWED.")
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Notification required", message: "This application will not work without notification promission.\nPlease enable it in Settings.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
+                        let alert = UIAlertController(title: NSLocalizedString("GRANT_NOFITICATION_ERROR_ALERT_TITLE", comment: ""), message: NSLocalizedString("GRANT_NOFITICATION_ERROR_ALERT_MESSAGE", comment: ""), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OPEN_SETTINGS", comment: ""), style: .default, handler: { (action) in
                             if let url = URL(string: UIApplication.openSettingsURLString) {
                                 if UIApplication.shared.canOpenURL(url) {
                                     if #available(iOS 10.0, *) {
@@ -97,7 +97,7 @@ class InitSettingsViewController: UITableViewController {
                                 }
                             }
                         }))
-                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .cancel, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
