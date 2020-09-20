@@ -37,16 +37,7 @@
 
 /* Begin PBXFileReference section */
 		4728C9D023142D0600DF8F7F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		47A76C5E23CD870E0053DCE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		47A76C5F23CD870E0053DCE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		47A76C6023CD87180053DCE0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		47A76C6123CD87190053DCE0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		47A76C6223CD87230053DCE0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		47A76C6323CD87230053DCE0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		47A76C6723CD8BAD0053DCE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		47A76C6923CD8BB40053DCE0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		47A76C6A23CD8BB50053DCE0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		47A76C6B23CD8BB60053DCE0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		862BF0232334BDCA00B0B91A /* InitSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingsViewController.swift; sourceTree = "<group>"; };
 		862BF0252334BEA000B0B91A /* InitSettingsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSettingsNavViewController.swift; sourceTree = "<group>"; };
 		8640922022F6A831006DE85C /* A2IPNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A2IPNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,9 +181,6 @@
 			knownRegions = (
 				en,
 				Base,
-				"zh-Hans",
-				ja,
-				"zh-Hant",
 			);
 			mainGroup = 8640921722F6A831006DE85C;
 			productRefGroup = 8640922122F6A831006DE85C /* Products */;
@@ -241,9 +229,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				47A76C6723CD8BAD0053DCE0 /* en */,
-				47A76C6923CD8BB40053DCE0 /* zh-Hans */,
-				47A76C6A23CD8BB50053DCE0 /* zh-Hant */,
-				47A76C6B23CD8BB60053DCE0 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -252,9 +237,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8640922A22F6A831006DE85C /* Base */,
-				47A76C5E23CD870E0053DCE0 /* zh-Hans */,
-				47A76C6023CD87180053DCE0 /* ja */,
-				47A76C6223CD87230053DCE0 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -263,9 +245,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8640922F22F6A834006DE85C /* Base */,
-				47A76C5F23CD870E0053DCE0 /* zh-Hans */,
-				47A76C6123CD87190053DCE0 /* ja */,
-				47A76C6323CD87230053DCE0 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -396,11 +375,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 202001141200;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 202009202333;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -410,9 +388,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.bi119aTe5hXk.A2IPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = A2IPNSDEVv3;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = A2IPNSv3macDev;
-				SUPPORTS_MACCATALYST = YES;
+				PROVISIONING_PROFILE_SPECIFIER = A2IPNSv5.20200920;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = A2IPNSv3macAS;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -425,8 +403,7 @@
 				CODE_SIGN_ENTITLEMENTS = A2IPNS/A2IPNS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Huang Xingkai (HR66SGQEZ4)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 202001141200;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				CURRENT_PROJECT_VERSION = 202009202333;
 				DEVELOPMENT_TEAM = HR66SGQEZ4;
 				INFOPLIST_FILE = A2IPNS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -436,9 +413,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.bi119aTe5hXk.A2IPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = A2iPNSASv3;
+				PROVISIONING_PROFILE_SPECIFIER = A2IPNSv5.20200920;
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = A2IPNSv3macAS;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

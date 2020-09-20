@@ -18,8 +18,12 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Using BLE to send nofications to other device.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -46,6 +50,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

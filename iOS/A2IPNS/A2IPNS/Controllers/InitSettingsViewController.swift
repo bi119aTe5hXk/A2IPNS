@@ -8,15 +8,19 @@
 
 import UIKit
 import UserNotifications
+//import CoreBluetooth //USE FOR TESTING BLE DEVICE
 
-class InitSettingsViewController: UITableViewController {
+class InitSettingsViewController: UITableViewController{//,CBPeripheralManagerDelegate { //USE FOR TESTING BLE DEVICE
+    
+    
 
     @IBOutlet weak var grantNotifyPermissionBTN: UIButton!
     @IBOutlet weak var installA2PNSBTN: UIButton!
     @IBOutlet weak var showQRCodeBTN: UIButton!
     @IBOutlet weak var doneBTN: UIButton!
-
-
+    
+    //var peripheralManager: CBPeripheralManager! //USE FOR TESTING BLE DEVICE
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,9 @@ class InitSettingsViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
+        
+        //USE FOR TESTING BLE DEVICE
+        //peripheralManager = CBPeripheralManager.init(delegate: self, queue: nil)
 
 
         self.resetUI()
@@ -208,5 +214,15 @@ class InitSettingsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //USE FOR TESTING BLE DEVICE
+//    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+//        if(peripheral.state == .poweredOn) {
+//            self.peripheralManager.startAdvertising([CBAdvertisementDataLocalNameKey:"A2IPNS"])
+//            print("peripheral is advertising...")
+//        }else{
+//            self.peripheralManager.stopAdvertising()
+//        }
+//    }
 
 }
