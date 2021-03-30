@@ -20,6 +20,11 @@ platform :ios do
   lane :beta do
     increment_build_number(xcodeproj: "A2IPNS.xcodeproj")
     build_app(scheme: "A2IPNS")
-    upload_to_testflight
+    upload_to_testflight(
+      	distribute_external: true,
+	groups: [
+        	"External Testers",
+		"PUBLIC"
+    	])
   end
 end
