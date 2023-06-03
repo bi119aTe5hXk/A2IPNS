@@ -15,7 +15,7 @@ This project require Android client [A2PNS](https://github.com/xlfdll/A2PNS).
 
     You have to enroll in the Apple Developer Program, and you can't use a Wildcard App ID for push notification services. The App ID must be explicit. Don't forget to check the "Push Notifications" box in "Capabilities" list.
 
-2. Create an unencrypted pem file from cert and p8 files. See [INSTALL.md in Web folder](https://github.com/bi119aTe5hXk/A2IPNS/tree/master/Web/INSTALL.md) for more detail.
+2. Create a p8 files. See [INSTALL.md in Web folder](https://github.com/bi119aTe5hXk/A2IPNS/tree/master/Web/INSTALL.md) or [bi119aTe5hXk's post](https://blog.bi119ate5hxk.net/2023/05/30/%e6%89%8b%e5%8a%a8%e9%83%a8%e7%bd%b2a2ipns%e6%9c%8d%e5%8a%a1%e6%95%99%e7%a8%8b/) for more detail.
 
 
 3. Generate a Provisioning Profile with the Explicit App ID, and download the .mobileprovision file.
