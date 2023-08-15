@@ -7,7 +7,7 @@ This project require Android client [A2PNS](https://github.com/xlfdll/A2PNS).
   <img src="https://github.com/xlfdll/xlfdll.github.io/raw/master/images/google-play-badge.png" alt="Get A2PNS (Android) on Google Play Store" height="64">
 </a>
 
-[Join the iOS testflight](https://testflight.apple.com/join/cbUVu5XI)
+[Join the iOS testflight](https://testflight.apple.com/join/4ioSUsT3)
 
 ## How to Build
 
