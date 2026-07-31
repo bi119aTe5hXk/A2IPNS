@@ -32,7 +32,7 @@ class MoreViewController: UITableViewController {
         }
     }
     @IBAction func a2pnsPageBTNPressed(_ sender: Any) {
-        let url = URL(string:a2pnsGooglePlayStoreURL)
+        let url = URL(string:a2pnsDownloadURL)
         if( UIApplication.shared.canOpenURL(url!) ) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url!)

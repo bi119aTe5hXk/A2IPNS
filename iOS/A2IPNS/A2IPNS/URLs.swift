@@ -7,5 +7,5 @@
 //
 
 import Foundation
-let a2pnsGooglePlayStoreURL = "https://play.google.com/store/apps/details?id=org.xlfdll.a2pns"
+let a2pnsDownloadURL = "https://github.com/xlfdll/A2PNS/releases/latest"
 let projectGithubURL = "https://github.com/bi119aTe5hXk/A2IPNS"

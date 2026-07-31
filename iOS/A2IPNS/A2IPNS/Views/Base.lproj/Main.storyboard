@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="mac" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,14 +29,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="A2IPNS" id="8Th-9C-YD8">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tgl-CS-13I">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="ehc-lt-bSY">
-                                <rect key="frame" x="755" y="13" width="25" height="24"/>
+                                <rect key="frame" x="754" y="9" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="showInfoBTNPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="4JV-W1-eVk"/>
@@ -50,28 +51,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1963.7681159420292" y="956.25"/>
+            <point key="canvasLocation" x="2194" y="1692"/>
         </scene>
         <!--Initialization settings-->
         <scene sceneID="c3m-dt-yU1">
             <objects>
                 <tableViewController storyboardIdentifier="InitSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SBH-5V-XsE" customClass="InitSettingsViewController" customModule="A2IPNS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sHv-oe-YlG">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="1. Notification permission" footerTitle="If you choose not to allow the notification service, this application will not work as normal." id="MAA-4T-Kg5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="4gK-yD-Wpi" rowHeight="93" style="IBUITableViewCellStyleDefault" id="GIz-Xn-Yx9">
-                                        <rect key="frame" x="0.0" y="55.5" width="800" height="93"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GIz-Xn-Yx9" id="WRS-KX-wLI">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4gK-yD-Wpi">
-                                                    <rect key="frame" x="20" y="0.0" width="760" height="93"/>
+                                                    <rect key="frame" x="20" y="0.0" width="353" height="93"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">This application required remote push notification permission for receiving notification from server-side which is your Android device. </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -82,14 +83,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="r0k-Co-PSp">
-                                        <rect key="frame" x="0.0" y="148.5" width="800" height="49"/>
+                                        <rect key="frame" x="0.0" y="148.33333206176758" width="393" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r0k-Co-PSp" id="0I4-wD-qAj">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kot-8b-HvT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="800" height="49"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kot-8b-HvT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Grant permissions"/>
                                                     <connections>
@@ -101,20 +102,20 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="2. Install A2PNS" footerTitle="Application will be install to your Android device automatically." id="pgn-a7-Kd5">
+                            <tableViewSection headerTitle="2. Install A2PNS" id="pgn-a7-Kd5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="uyK-uf-JCd" rowHeight="107" style="IBUITableViewCellStyleDefault" id="y3q-aW-Q9N">
-                                        <rect key="frame" x="0.0" y="273" width="800" height="107"/>
+                                        <rect key="frame" x="0.0" y="281.33333015441895" width="393" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y3q-aW-Q9N" id="Opp-xk-LWa">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="107"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uyK-uf-JCd">
-                                                    <rect key="frame" x="20" y="0.0" width="760" height="107"/>
+                                                    <rect key="frame" x="20" y="0.0" width="353" height="107"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">This step will open Safari and visit A2PNS at Google Play Store. 
-Please login into your Google account and press the install button.</string>
+                                                    <string key="text">This step will open Safari and visit Github A2PNS page. 
+Please download apk file and install it on your Android device.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -123,16 +124,16 @@ Please login into your Google account and press the install button.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="BIW-63-1sO">
-                                        <rect key="frame" x="0.0" y="380" width="800" height="40"/>
+                                        <rect key="frame" x="0.0" y="388.33333015441895" width="393" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BIW-63-1sO" id="N4D-qN-dKU">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gou-Sz-5i8">
-                                                    <rect key="frame" x="0.0" y="-5" width="800" height="49"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gou-Sz-5i8">
+                                                    <rect key="frame" x="0.0" y="-5" width="393" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <state key="normal" title="Install A2PNS from Google Play"/>
+                                                    <state key="normal" title="Open A2PNS Github page"/>
                                                     <connections>
                                                         <action selector="installA2PNSBTNPressed:" destination="SBH-5V-XsE" eventType="touchUpInside" id="Ugj-Eu-xym"/>
                                                     </connections>
@@ -145,14 +146,14 @@ Please login into your Google account and press the install button.</string>
                             <tableViewSection headerTitle="3. Scan QR code" footerTitle="" id="fOb-fB-oQV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="39D-Ou-nbz" rowHeight="84" style="IBUITableViewCellStyleDefault" id="k5I-p0-0FM">
-                                        <rect key="frame" x="0.0" y="495.5" width="800" height="84"/>
+                                        <rect key="frame" x="0.0" y="491.66666221618652" width="393" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k5I-p0-0FM" id="u0M-3u-wdH">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="39D-Ou-nbz">
-                                                    <rect key="frame" x="20" y="0.0" width="760" height="84"/>
+                                                    <rect key="frame" x="20" y="0.0" width="353" height="84"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <string key="text">Scan the QR code using your Android device.
 This procedure will pair both your iOS and Android device.</string>
@@ -164,14 +165,14 @@ This procedure will pair both your iOS and Android device.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="eWT-Lc-SQO">
-                                        <rect key="frame" x="0.0" y="579.5" width="800" height="40"/>
+                                        <rect key="frame" x="0.0" y="575.66666221618652" width="393" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eWT-Lc-SQO" id="K4f-cI-4mn">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oB3-9R-ykU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oB3-9R-ykU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Show QR code"/>
                                                     <connections>
@@ -186,14 +187,14 @@ This procedure will pair both your iOS and Android device.</string>
                             <tableViewSection headerTitle="" footerTitle="" id="rw4-lF-ptB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="RY9-qv-FJs">
-                                        <rect key="frame" x="0.0" y="671" width="800" height="40"/>
+                                        <rect key="frame" x="0.0" y="667.33332824707031" width="393" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RY9-qv-FJs" id="HWb-6x-B7k">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etb-Jr-Svr">
-                                                    <rect key="frame" x="0.0" y="-5" width="800" height="49"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etb-Jr-Svr">
+                                                    <rect key="frame" x="0.0" y="-5" width="393" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Done"/>
                                                     <connections>
@@ -228,7 +229,7 @@ This procedure will pair both your iOS and Android device.</string>
             <objects>
                 <navigationController storyboardIdentifier="InitSettingsNavViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iz5-fZ-QYE" customClass="InitSettingsNavViewController" customModule="A2IPNS" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F49-ji-Js1">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -256,7 +257,7 @@ This procedure will pair both your iOS and Android device.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142" y="504"/>
+            <point key="canvasLocation" x="-1963" y="203"/>
         </scene>
         <!--History-->
         <scene sceneID="IyX-u3-jxS">
@@ -277,21 +278,21 @@ This procedure will pair both your iOS and Android device.</string>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="tJT-Xa-dLX" detailTextLabel="DzP-o5-5te" rowHeight="65" style="IBUITableViewCellStyleSubtitle" id="OgG-Pe-ds4">
-                                <rect key="frame" x="0.0" y="84" width="800" height="65"/>
+                                <rect key="frame" x="0.0" y="106" width="800" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OgG-Pe-ds4" id="vJS-Gb-fsF">
                                     <rect key="frame" x="0.0" y="0.0" width="800" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJT-Xa-dLX" customClass="CopyableLabel" customModule="A2IPNS" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20" y="12.999999999999998" width="33" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DzP-o5-5te">
-                                            <rect key="frame" x="20" y="35.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="19.999999999999996" y="36.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -327,21 +328,21 @@ This procedure will pair both your iOS and Android device.</string>
             <objects>
                 <tableViewController id="6Ou-jN-PMy" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="2aY-gg-ekF">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Notification detail" id="lKt-P1-wpN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="vav-7U-nJW" rowHeight="68" style="IBUITableViewCellStyleDefault" id="I1K-gY-yUh">
-                                        <rect key="frame" x="0.0" y="55.5" width="800" height="68"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I1K-gY-yUh" id="Yhw-11-C7h">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vav-7U-nJW">
-                                                    <rect key="frame" x="20" y="0.0" width="760" height="68"/>
+                                                    <rect key="frame" x="20" y="0.0" width="353" height="68"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -351,14 +352,14 @@ This procedure will pair both your iOS and Android device.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="iwM-rO-Yx5" rowHeight="68" style="IBUITableViewCellStyleDefault" id="hAS-TP-ASA">
-                                        <rect key="frame" x="0.0" y="123.5" width="800" height="68"/>
+                                        <rect key="frame" x="0.0" y="123.33333206176758" width="393" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hAS-TP-ASA" id="mfD-sf-w1g">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iwM-rO-Yx5">
-                                                    <rect key="frame" x="20" y="0.0" width="760" height="68"/>
+                                                    <rect key="frame" x="20" y="0.0" width="353" height="68"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -372,10 +373,10 @@ This procedure will pair both your iOS and Android device.</string>
                             <tableViewSection id="DuI-iI-klE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RPc-Wq-qKY">
-                                        <rect key="frame" x="0.0" y="227.5" width="800" height="44"/>
+                                        <rect key="frame" x="0.0" y="227.33333015441895" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RPc-Wq-qKY" id="Yk8-yg-bEb">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -398,7 +399,7 @@ This procedure will pair both your iOS and Android device.</string>
                 <navigationController id="Xp8-m6-f0D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="history" id="uTk-ia-0oO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FnW-AL-O4r">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                        <rect key="frame" x="0.0" y="59" width="800" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -407,7 +408,7 @@ This procedure will pair both your iOS and Android device.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7r-z7-jni" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="284"/>
+            <point key="canvasLocation" x="-539" y="235"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wRs-du-f3A">
@@ -415,7 +416,7 @@ This procedure will pair both your iOS and Android device.</string>
                 <navigationController id="3v4-lJ-YyQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="oqb-C6-v5w"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WHr-6d-se6">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                        <rect key="frame" x="0.0" y="59" width="800" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -424,7 +425,7 @@ This procedure will pair both your iOS and Android device.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6n-Z5-V0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="958"/>
+            <point key="canvasLocation" x="-669" y="958"/>
         </scene>
         <!--More-->
         <scene sceneID="9Cc-Ig-cQM">
@@ -433,18 +434,18 @@ This procedure will pair both your iOS and Android device.</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LtF-ij-Sb9">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="SETTINGS" id="Ioa-KW-5WN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6rT-F1-2XF">
-                                        <rect key="frame" x="0.0" y="55.5" width="800" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="800" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6rT-F1-2XF" id="fwg-o9-Ojx">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="800" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiC-Q8-gOt">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiC-Q8-gOt">
                                                     <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Initialization settings"/>
@@ -456,13 +457,13 @@ This procedure will pair both your iOS and Android device.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HeE-Fi-sDt">
-                                        <rect key="frame" x="0.0" y="99.5" width="800" height="44"/>
+                                        <rect key="frame" x="0.0" y="99" width="800" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HeE-Fi-sDt" id="hct-3p-j6j">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="800" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-9a-wuG">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-9a-wuG">
                                                     <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Show QR code"/>
@@ -477,33 +478,15 @@ This procedure will pair both your iOS and Android device.</string>
                             </tableViewSection>
                             <tableViewSection footerTitle="Developer: @bi119aTe5hXk, @xlfdll" id="czX-eb-91S">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="J1q-Md-X1f">
-                                        <rect key="frame" x="0.0" y="179.5" width="800" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J1q-Md-X1f" id="OGS-ZG-Lg5">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ow-1Q-9ch">
-                                                    <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <state key="normal" title="A2PNS at Google Play"/>
-                                                    <connections>
-                                                        <action selector="a2pnsPageBTNPressed:" destination="RMV-gW-3zA" eventType="touchUpInside" id="GEz-u5-aIX"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ipq-HC-3gS">
-                                        <rect key="frame" x="0.0" y="223.5" width="800" height="44"/>
+                                        <rect key="frame" x="0.0" y="178.66666603088379" width="800" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ipq-HC-3gS" id="anv-Ej-Y4Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="800" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-Zf-6jk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="800" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-Zf-6jk">
+                                                    <rect key="frame" x="0.0" y="-1" width="800" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <state key="normal" title="Project Github Page"/>
                                                     <connections>
@@ -526,10 +509,18 @@ This procedure will pair both your iOS and Android device.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2c-WM-anU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969.56521739130437" y="957.58928571428567"/>
+            <point key="canvasLocation" x="832" y="958"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6cu-fY-oHh"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
